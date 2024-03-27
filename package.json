@@ -1,11 +1,20 @@
 {
-  "name": "project-skeleton",
+  "name": "project-cutts",
   "version": "0.1.0",
   "private": true,
   "contributors": [
-    "Team Member 1 <member1@middlebury.edu>",
-    "Team Member 2 <member2@middlebury.edu>"
+    "Bryan Guevara <bguevara@middlebury.edu>",
+    "Catie Baxter <cbbaxter@middlebury.edu>",
+    "Coleman Bashore <cbashore@middlebury.edu>",
+    "David Brennan <dbrennan@middlebury.edu>",
+    "Devon Tyrie <dtyrie@middlebury.edu>",
+    "Lila Kosowsky <lkosowsky@middlebury.edu>",
+    "Mihir Singh <mbsingh@middlebury.edu>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csci312-s24/project-cutts.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
