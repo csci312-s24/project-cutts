@@ -18,8 +18,8 @@ describe("End-to-end testing", () => {
 mockRouter.useParser(
   createDynamicRouteParser([
     // These paths should match those found in the `/pages` folder:
-    "/articles/[[...id]]",
-    "/articles/[id]/edit",
-    "/edit",
+    "/driver",
+    "/rider",
+    "/profile",
   ]),
 );
