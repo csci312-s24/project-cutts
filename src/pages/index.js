@@ -35,7 +35,7 @@ export default function Home() {
             <h2 className={inter.className}>
               Driver <span>-&gt;</span>
             </h2>
-            <p className={inter.className}>View Planned Trips</p>
+            <p className={inter.className}>View Proposed Trips</p>
           </button>
 
           <button
@@ -46,7 +46,7 @@ export default function Home() {
             <h2 className={inter.className}>
               Rider <span>-&gt;</span>
             </h2>
-            <p className={inter.className}>View Proposed Trips</p>
+            <p className={inter.className}>View Planned Trips</p>
           </button>
         </div>
       </main>
