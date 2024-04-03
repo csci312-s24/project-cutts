@@ -6,12 +6,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Profile() {
   const router = useRouter();
+  const handleClick = (comm) => {
+    router.push(`/${comm}`);
+  };
   return (
     <div>
       <button
         type="button"
         className={styles.card}
-        onClick={() => router.push("/")}
+        onClick={() => handleClick("")}
       >
         <h2 className={inter.className}>
           Home <span>-&gt;</span>

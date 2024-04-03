@@ -7,25 +7,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
+  const handleClick = (comm) => {
+    router.push(`/${comm}`);
+  };
   return (
     <>
       <Head>
         <title>Cutts App</title>
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="Profile"
-             />
-          </div>
-        </div>
-
         <button
           type="button"
           className={styles.card}
-          onClick={() => router.push("/profile")}
+          onClick={() => handleClick("profile")}
         >
           <h2 className={inter.className}>
             Profile <span>-&gt;</span>
@@ -36,7 +30,7 @@ export default function Home() {
           <button
             type="button"
             className={styles.card}
-            onClick={() => router.push("/driver")}
+            onClick={() => handleClick("driver")}
           >
             <h2 className={inter.className}>
               Driver <span>-&gt;</span>
@@ -47,7 +41,7 @@ export default function Home() {
           <button
             type="button"
             className={styles.card}
-            onClick={() => router.push("/rider")}
+            onClick={() => handleClick("rider")}
           >
             <h2 className={inter.className}>
               Rider <span>-&gt;</span>
