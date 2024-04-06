@@ -1,14 +1,19 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import styles from "@/styles/Home.module.css";
-import React, { useState } from "react";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
 import CarInfo from "../components/CarInfo";
+import UserShape from "../components/UserShape";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Profile({ User }) {
+export default function Profile({
+  User = {
+    make: "Honda",
+    model: "CRV",
+    year: 2015,
+    plate: "MIDDCar1",
+  },
+}) {
   // routing
   const router = useRouter();
   const handleClick = (comm) => {
@@ -17,17 +22,11 @@ export default function Profile({ User }) {
 
   // editing profile
   const toProfileEditor = () => {
-    router.push(`/appUserProfileEdit`);
+    router.push(`/editProfile`);
   };
 
   // hardcoded for now - normally get these from the AppUser prop
   const hasCar = true;
-  const UserCar = {
-    make: "Honda",
-    model: "CRV",
-    year: 2015,
-    plate: "MIDDCar1",
-  };
 
   return (
     <div>
@@ -58,8 +57,12 @@ export default function Profile({ User }) {
         <ul>Phone Number: </ul>
         <ul>Grad Year: </ul>
 
-        {hasCar && <CarInfo car={UserCar} />}
+        {hasCar && <CarInfo car={User} />}
       </div>
     </div>
   );
 }
+
+Profile.propTypes = {
+  User: UserShape,
+};
