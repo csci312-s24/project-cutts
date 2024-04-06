@@ -8,6 +8,7 @@ export default function EditProfile() {
     num: 212,
     year: 2024,
     email: "mbsingh@middlebury.edu",
+    id: 1,
   };
 
   const complete = async (User) => {

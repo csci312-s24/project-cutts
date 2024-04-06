@@ -13,6 +13,7 @@ const UserShape = PropTypes.shape({
   num: PropTypes.num,
   year: PropTypes.num,
   email: PropTypes.string,
+  userID: PropTypes.num,
 });
 
 export default UserShape;
