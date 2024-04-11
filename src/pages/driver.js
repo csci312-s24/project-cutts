@@ -10,25 +10,29 @@ export default function Driver() {
     router.push(`/${comm}`);
   };
   return (
-    <div>
-      <button
-        type="button"
-        className={styles.card}
-        onClick={() => handleClick("profile")}
-      >
-        <h2 className={inter.className}>
-          Profile <span>-&gt;</span>
-        </h2>
-      </button>
-      <button
-        type="button"
-        className={styles.card}
-        onClick={() => handleClick("")}
-      >
-        <h2 className={inter.className}>
-          Home <span>-&gt;</span>
-        </h2>
-      </button>
+    <div className={styles.component}>
+      <h1 className={inter.className}>Driver Portal</h1>
+
+      <div className={styles.grid}>
+        <button
+          type="button"
+          className={styles.card}
+          onClick={() => handleClick("profile")}
+        >
+          <h2 className={inter.className}>
+            Profile <span>-&gt;</span>
+          </h2>
+        </button>
+        <button
+          type="button"
+          className={styles.card}
+          onClick={() => handleClick("")}
+        >
+          <h2 className={inter.className}>
+            Home <span>-&gt;</span>
+          </h2>
+        </button>
+      </div>
       <p>Proposed Trips</p>
     </div>
   );

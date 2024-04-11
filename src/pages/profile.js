@@ -29,8 +29,10 @@ export default function Profile({
   const hasCar = true;
 
   return (
-    <div>
+    <div className={styles.component}>
       <div>
+        <h1 className={inter.className}>Profile Information</h1>
+
         <button
           type="button"
           className={styles.card}
@@ -40,7 +42,6 @@ export default function Profile({
             Home <span>-&gt;</span>
           </h2>
         </button>
-        <h1 className={inter.className}>Profile Information</h1>
         <button
           type="button"
           className={styles.card}
