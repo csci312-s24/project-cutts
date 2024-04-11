@@ -11,8 +11,6 @@ export default function Driver() {
   };
   return (
     <div className={styles.component}>
-      <h1 className={inter.className}>Driver Portal</h1>
-
       <div className={styles.grid}>
         <button
           type="button"
@@ -33,6 +31,7 @@ export default function Driver() {
           </h2>
         </button>
       </div>
+      <h1 className={inter.className}>Driver Portal</h1>
       <p>Proposed Trips</p>
     </div>
   );

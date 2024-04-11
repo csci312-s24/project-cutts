@@ -23,7 +23,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
-  padding: 10rem;
+  padding: 4rem;
   min-height: 100vh;
   background-color: white;
 }
@@ -62,7 +62,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(25%, auto));
+  grid-template-columns: repeat(3, minmax(15%, auto));
   width: 60%;
   max-width: 100%;
 }

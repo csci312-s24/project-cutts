@@ -11,8 +11,6 @@ export default function Rider() {
   };
   return (
     <div className={styles.component}>
-      <h1 className={inter.className}>Rider Portal</h1>
-
       <div className={styles.grid}>
         <button
           type="button"
@@ -33,6 +31,8 @@ export default function Rider() {
           </h2>
         </button>
       </div>
+      <h1 className={inter.className}>Rider Portal</h1>
+
       <p>Planned Trips</p>
     </div>
   );
