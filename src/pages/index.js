@@ -15,25 +15,33 @@ export default function Home() {
       <Head>
         <title>Cutts App</title>
       </Head>
+
       <main className={styles.main}>
-        <button
-          type="button"
-          className={styles.card}
-          onClick={() => handleClick("profile")}
-        >
-          <h2 className={inter.className}>
-            Profile <span>-&gt;</span>
-          </h2>
-        </button>
+        <div className={styles.title}>
+          <h1 className={inter.className}>Midd Rideshare</h1>
+          <p className={inter.className}>
+            Get rides to Burlington, Boston, or wherever else you may need to
+            go!
+          </p>
+        </div>
 
         <div className={styles.grid}>
+          <button
+            type="button"
+            className={styles.card}
+            onClick={() => handleClick("profile")}
+          >
+            <h2 className={inter.className}>
+              Profile <span>-&gt;</span>
+            </h2>
+          </button>
           <button
             type="button"
             className={styles.card}
             onClick={() => handleClick("driver")}
           >
             <h2 className={inter.className}>
-              Driver <span>-&gt;</span>
+              Driver Portal<span>-&gt;</span>
             </h2>
             <p className={inter.className}>View Proposed Trips</p>
           </button>
@@ -44,7 +52,7 @@ export default function Home() {
             onClick={() => handleClick("rider")}
           >
             <h2 className={inter.className}>
-              Rider <span>-&gt;</span>
+              Rider Portal<span>-&gt;</span>
             </h2>
             <p className={inter.className}>View Planned Trips</p>
           </button>

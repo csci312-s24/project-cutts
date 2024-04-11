@@ -1,3 +1,5 @@
+import styles from "@/styles/Home.module.css";
+
 import { useRouter } from "next/router";
 import AppUserProfileEdit from "../components/AppUserProfileEdit";
 
@@ -19,7 +21,7 @@ export default function EditProfile() {
   };
 
   return (
-    <div>
+    <div className={styles.component}>
       <AppUserProfileEdit appUser={ExampleUser} complete={complete} />
     </div>
   );

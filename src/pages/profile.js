@@ -29,28 +29,31 @@ export default function Profile({
   const hasCar = true;
 
   return (
-    <div>
+    <div className={styles.component}>
       <div>
-        <button
-          type="button"
-          className={styles.card}
-          onClick={() => handleClick("")}
-        >
-          <h2 className={inter.className}>
-            Home <span>-&gt;</span>
-          </h2>
-        </button>
-        <h1 className={inter.className}>Profile Information</h1>
-        <button
-          type="button"
-          className={styles.card}
-          onClick={() => toProfileEditor()}
-        >
-          <h2 className={inter.className}>
-            Edit Profile <span>-&gt;</span>
-          </h2>
-        </button>
+        <div className={styles.grid}>
+          <button
+            type="button"
+            className={styles.card}
+            onClick={() => handleClick("")}
+          >
+            <h2 className={inter.className}>
+              Home <span>-&gt;</span>
+            </h2>
+          </button>
+          <button
+            type="button"
+            className={styles.card}
+            onClick={() => toProfileEditor()}
+          >
+            <h2 className={inter.className}>
+              Edit Profile <span>-&gt;</span>
+            </h2>
+          </button>
+        </div>
       </div>
+      <h1 className={inter.className}>Profile Information</h1>
+
       <div>
         <ul>Name: </ul>
         <ul>Email: </ul>
