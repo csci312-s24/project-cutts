@@ -1,8 +1,8 @@
 import styles from "@/styles/Home.module.css";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
-import CarInfo from "./src/components/CarInfo";
-import UserShape from "./src/components/UserShape";
+import CarInfo from "../components/CarInfo";
+import UserShape from "../components/UserShape";
 
 const inter = Inter({ subsets: ["latin"] });
 
