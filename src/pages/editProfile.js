@@ -14,17 +14,13 @@ export default function EditProfile() {
   };
 
   const complete = async (User) => {
-    const createRouter = createRouter();
+    const createdRouter = createRouter();
     if (User) {
-      createRouter
-        .put(async (req, res) => {
-          const { id, ...userInfo } = req.body;
-          const user = await User.query().updateAndFetchById(
-            id, 
-            userInfo
-          );
-          res.status(200).json(user);
-        })
+      createdRouter.put(async (req, res) => {
+        const { id, ...userInfo } = req.body;
+        const user = await User.query().updateAndFetchById(id, userInfo);
+        res.status(200).json(user);
+      });
       router.back();
     } else {
       router.back();

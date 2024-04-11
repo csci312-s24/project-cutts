@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
-import { Model } from "objection";
 import BaseModel from "./BaseModel";
 
-export default class Article extends BaseModel {
+export default class User extends BaseModel {
   // Table name is the only required property.
   static get tableName() {
-    return "Article";
+    return "User";
   }
 
   // Objection.js assumes primary key is `id` by default
@@ -23,5 +22,5 @@ export default class Article extends BaseModel {
         year: { type: "integer" },
       },
     };
-  };
+  }
 }
