@@ -15,7 +15,6 @@ mockRouter.useParser(
     "/driver",
     "/rider",
     "/profile",
-    "/appUserProfileEdit",
   ]),
 );
 

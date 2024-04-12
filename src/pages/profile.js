@@ -12,6 +12,7 @@ export default function Profile({
     model: "CRV",
     year: 2015,
     plate: "MIDDCar1",
+    userID: 1,
   },
 }) {
   // routing
