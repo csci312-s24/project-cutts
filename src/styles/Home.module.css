@@ -18,6 +18,20 @@
   color: rgb(0, 49, 128);
 }
 
+.profileButton {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 0.5rem 0.6rem;
+}
+
+.homeButton {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  padding: 0.5rem 0.6rem;
+}
+
 .component {
   display: flex;
   flex-direction: column;

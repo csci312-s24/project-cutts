@@ -14,21 +14,17 @@ export default function Rider() {
       <div className={styles.grid}>
         <button
           type="button"
-          className={styles.card}
+          className={styles.profileButton}
           onClick={() => handleClick("profile")}
         >
-          <h2 className={inter.className}>
-            Profile <span>-&gt;</span>
-          </h2>
+          <h2 className={inter.className}>Profile</h2>
         </button>
         <button
           type="button"
-          className={styles.card}
+          className={styles.homeButton}
           onClick={() => handleClick("")}
         >
-          <h2 className={inter.className}>
-            Home <span>-&gt;</span>
-          </h2>
+          <h2 className={inter.className}>Home</h2>
         </button>
       </div>
       <h1 className={inter.className}>Rider Portal</h1>

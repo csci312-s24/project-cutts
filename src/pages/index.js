@@ -25,8 +25,16 @@ export default function Home() {
           </p>
         </div>
 
+        <button
+          type="button"
+          className={styles.profileButton}
+          onClick={() => handleClick("profile")}
+        >
+          <h2 className={inter.className}>Profile</h2>
+        </button>
+
         <div className={styles.grid}>
-          <button
+          {/* <button
             type="button"
             className={styles.card}
             onClick={() => handleClick("profile")}
@@ -34,7 +42,7 @@ export default function Home() {
             <h2 className={inter.className}>
               Profile <span>-&gt;</span>
             </h2>
-          </button>
+          </button> */}
           <button
             type="button"
             className={styles.card}

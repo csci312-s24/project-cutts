@@ -34,12 +34,10 @@ export default function Profile({
         <div className={styles.grid}>
           <button
             type="button"
-            className={styles.card}
+            className={styles.homeButton}
             onClick={() => handleClick("")}
           >
-            <h2 className={inter.className}>
-              Home <span>-&gt;</span>
-            </h2>
+            <h2 className={inter.className}>Home</h2>
           </button>
           <button
             type="button"
