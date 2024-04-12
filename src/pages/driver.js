@@ -28,16 +28,18 @@ export default function Driver() {
         </button>
       </div>
       <h1 className={inter.className}>Driver Portal</h1>
+      <div className={styles.grid}>
+        <button
+          type="button"
+          className={styles.card}
+          onClick={() => handleClick("newPlannedTrip")}
+        >
+          <h2 className={inter.className}>
+            New Ride <span>-&gt;</span>
+          </h2>
+        </button>
+      </div>
       <p>Proposed Trips</p>
-      <button
-        type="button"
-        className={styles.card}
-        onClick={() => handleClick("newPlannedTrip")}
-      >
-        <h2 className={inter.className}>
-          New Ride <span>-&gt;</span>
-        </h2>
-      </button>
     </div>
   );
 }
