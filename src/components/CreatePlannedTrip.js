@@ -18,6 +18,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
   const [departureDateInput, setDepartureDateInput] = useState("");
   const [departureLocationInput, setDepartureLocationInput] = useState("");
   const [seatInput, setSeatInput] = useState("");
+  const [messageInput, setMessageInput] = useState("");
 
   const handleSaveClick = () => {
     const plannedTrip = {
@@ -26,9 +27,17 @@ export default function CreatePlannedTrip({ driver, complete }) {
       departureTimeInput,
       departureLocationInput,
       seatInput,
+      messageInput,
     };
     complete(plannedTrip);
   };
+
+  const canSave =
+    driverNameInput &&
+    destinationInput &&
+    departureTimeInput &&
+    departureLocationInput &&
+    seatInput;
 
   const handleCancelClick = () => complete();
 
@@ -83,15 +92,25 @@ export default function CreatePlannedTrip({ driver, complete }) {
       <div>
         <input
           type="number"
+          min="0"
           id="Departure Location"
-          placeholder="How many available seats in your car"
+          placeholder="Available seats in your car"
           value={seatInput}
           onChange={(event) => setSeatInput(event.target.value)}
         />
       </div>
       <div>
+        <input
+          type="text"
+          id="message"
+          placeholder="(Optional) Add a message about your ride"
+          value={messageInput}
+          onChange={(event) => setMessageInput(event.target.value)}
+        />
+      </div>
+      <div>
         <div>
-          <button type="button" onClick={handleSaveClick}>
+          <button type="button" onClick={handleSaveClick} disabled={!canSave}>
             Save
           </button>
           <button type="button" onClick={handleCancelClick}>
