@@ -1,6 +1,7 @@
 import styles from "@/styles/Home.module.css";
 
 import { useRouter } from "next/router";
+import { createRouter } from "next-connect";
 import AppUserProfileEdit from "../components/AppUserProfileEdit";
 
 export default function EditProfile() {
@@ -14,8 +15,14 @@ export default function EditProfile() {
   };
 
   const complete = async (User) => {
+    const createdRouter = createRouter();
     if (User) {
-      // POST call to the database to update the User info that was edited
+      createdRouter.put(async (req, res) => {
+        const { id, ...userInfo } = req.body;
+        const user = await User.query().updateAndFetchById(id, userInfo);
+        res.status(200).json(user);
+      });
+      router.back();
     } else {
       router.back();
     }
