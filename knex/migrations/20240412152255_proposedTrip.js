@@ -1,22 +1,20 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+/* eslint-disable func-names */
 exports.up = function (knex) {
   return knex.schema.createTable("ProposedTrip", (table) => {
     table.increments("id").primary();
-    table.string("proposer").notNullable();
+    table
+      .integer("proposer")
+      .references("id")
+      .inTable("User")
+      .notNullable()
+      .onDelete("cascade");
     table.string("dest").notNullable();
-    table.string("date").notNullable();
-    table.string("timeFrame").notNullable();
-    table.string("message");
+    table.string("date");
+    table.string("timeFrame");
+    table.string("message").defaultTo("");
   });
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.down = function (knex) {
   return knex.schema.dropTableIfExists("ProposedTrip");
 };

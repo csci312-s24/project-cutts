@@ -18,8 +18,8 @@ export default class SeatRequest extends BaseModel {
       properties: {
         id: { type: "integer" },
         requester: { type: "integer" }, // the id of the user who requested
-        status: { type: "string", enum: ["approved", "denied", "none"] },
-        time: { type: "string", format: "date-time" },
+        status: { type: "string", enum: ["approved", "denied", "pending"] },
+        time: { type: "timestamp", default: "now" },
         plannedTripId: { type: "integer" },
       },
     };
