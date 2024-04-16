@@ -7,9 +7,15 @@ exports.seed = async function (knex) {
   await knex("User").del();
   await knex("User").insert([
     {
-      email: "panther@middlebury.edu",
-      name: "Panther",
-      num: 123456,
+      email: "dtyrie@middlebury.edu",
+      name: "Devon Tyrie",
+      num: "6177747109",
+      year: 2025,
+    },
+    {
+      email: "lkosowsky@middlebury.edu",
+      name: "Lila Kosowsky",
+      num: "7812498085",
       year: 2024,
     },
   ]);

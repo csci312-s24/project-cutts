@@ -18,7 +18,7 @@ export default class User extends BaseModel {
         id: { type: "integer" },
         name: { type: "string" },
         email: { type: "string" },
-        num: { type: "integer" },
+        num: { type: "string" },
         year: { type: "integer" },
       },
     };

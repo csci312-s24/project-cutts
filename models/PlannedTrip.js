@@ -35,7 +35,7 @@ export default class PlannedTrip extends BaseModel {
       relation: Model.BelongsToOneRelation,
       modelClass: PlannedTrip, // eslint-disable-line no-use-before-define
       join: {
-        from: "PlannedTrip.proposer", // will this work ?
+        from: "PlannedTrip.planner", // will this work ?
         to: "User.id",
       },
     },
