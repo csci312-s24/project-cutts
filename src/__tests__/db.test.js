@@ -24,7 +24,7 @@ describe("Cutts DB", () => {
 
   beforeEach(() =>
     // Reset contents of the test database
-    knex.seed.run(),
+    knex.seed.run(), 20000
   );
 
   describe("Querying tests", () => {
