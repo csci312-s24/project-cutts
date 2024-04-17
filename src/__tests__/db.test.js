@@ -17,14 +17,18 @@ describe("Cutts DB", () => {
       .then(() => knex.migrate.latest(), 20000 /* Wait for 20 seconds */),
   );
 
-  afterAll(() =>
-    // Ensure database connection is cleaned up after all tests
-    knex.destroy(),
+  afterAll(
+    () =>
+      // Ensure database connection is cleaned up after all tests
+      knex.destroy(),
+    20000,
   );
 
-  beforeEach(() =>
-    // Reset contents of the test database
-    knex.seed.run(),
+  beforeEach(
+    () =>
+      // Reset contents of the test database
+      knex.seed.run(),
+    20000,
   );
 
   describe("Querying tests", () => {
