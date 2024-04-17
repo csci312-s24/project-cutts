@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.increments("id").primary();
     table.string("email").unique().notNullable();
     table.string("name");
-    table.integer("num");
+    table.string("num");
     table.integer("year");
   });
 };
