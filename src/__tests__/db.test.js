@@ -19,7 +19,7 @@ describe("Cutts DB", () => {
 
   afterAll(() =>
     // Ensure database connection is cleaned up after all tests
-    knex.destroy(),
+    knex.destroy(), 20000
   );
 
   beforeEach(() =>
