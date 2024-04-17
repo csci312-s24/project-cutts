@@ -10,11 +10,11 @@ import ProposedTrip from "../../models/ProposedTrip";
 import PlannedTrip from "../../models/PlannedTrip";
 
 describe("Cutts DB", () => {
-  beforeAll(() =>
-    // Ensure test database is initialized before an tests
-    knex.migrate
-      .rollback()
-      .then(() => knex.migrate.latest(), 20000 /* Wait for 20 seconds */),
+  beforeAll(
+    () =>
+      // Ensure test database is initialized before an tests
+      knex.migrate.rollback().then(() => knex.migrate.latest()),
+    20000 /* Wait for 20 seconds */,
   );
 
   afterAll(
