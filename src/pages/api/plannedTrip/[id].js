@@ -5,9 +5,18 @@ import PlannedTrip from "../../../../models/PlannedTrip";
 
 const router = createRouter();
 
-router.get(async (req, res) => {
-  const plannedTrip = await PlannedTrip.query()
-    .findById(req.query.id)
-    .throwIfNotFound();
-  res.status(200).json(plannedTrip);
-});
+router
+  .get(async (req, res) => {
+    const plannedTrip = await PlannedTrip.query()
+      .findById(req.query.id)
+      .throwIfNotFound();
+    res.status(200).json(plannedTrip);
+  })
+  .put(async (req, res) => {
+    const { id, ...editedPlannedTrip } = req.body;
+    const plannedTrip = await PlannedTrip.query().updateAndFetchById(
+      id,
+      editedPlannedTrip,
+    );
+    res.status(200).json(plannedTrip);
+  });
