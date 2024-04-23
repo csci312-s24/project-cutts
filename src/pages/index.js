@@ -17,7 +17,6 @@ const ProfileButton = styled(Button)({
   right: "7px",
 });
 
-// We need an alternate name for theme since it is used above
 const Footer = styled("footer")(({ theme: styledTheme }) => ({
   borderTop: "1px solid #eaeaea",
   display: "flex",
