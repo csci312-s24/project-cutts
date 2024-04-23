@@ -2,7 +2,7 @@ import styles from "@/styles/Home.module.css";
 
 import { useRouter } from "next/router";
 import { createRouter } from "next-connect";
-import AppUserProfileEdit from "../components/AppUserProfileEdit";
+import AppUserProfileEdit from "../../components/AppUserProfileEdit";
 
 export default function EditProfile() {
   const router = useRouter();

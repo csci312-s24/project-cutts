@@ -4,10 +4,15 @@ import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// import ProfileButton from "/../index.js"
+
 export default function Driver() {
   const router = useRouter();
   const handleClick = (comm) => {
     router.push(`/${comm}`);
+  };
+  const toRideCreator = () => {
+    router.push(`/driver/newPlannedTrip`);
   };
   return (
     <div className={styles.component}>
@@ -32,7 +37,7 @@ export default function Driver() {
         <button
           type="button"
           className={styles.card}
-          onClick={() => handleClick("newPlannedTrip")}
+          onClick={() => toRideCreator()}
         >
           <h2 className={inter.className}>
             New Ride <span>-&gt;</span>

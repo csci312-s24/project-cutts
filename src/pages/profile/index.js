@@ -1,8 +1,8 @@
 import styles from "@/styles/Home.module.css";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
-import CarInfo from "../components/CarInfo";
-import UserShape from "../components/UserShape";
+import CarInfo from "../../components/CarInfo";
+import UserShape from "../../components/UserShape";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +23,7 @@ export default function Profile({
 
   // editing profile
   const toProfileEditor = () => {
-    router.push(`/editProfile`);
+    router.push(`/profile/edit`);
   };
 
   // hardcoded for now - normally get these from the AppUser prop

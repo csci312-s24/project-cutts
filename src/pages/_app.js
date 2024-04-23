@@ -2,7 +2,8 @@
 import PropTypes from "prop-types";
 import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }) {
+export default function App(appProps) {
+  const { Component, pageProps } = appProps;
   return <Component {...pageProps} />;
 }
 
