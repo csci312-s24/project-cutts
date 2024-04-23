@@ -1,9 +1,15 @@
+/**
+ * @jest-environment node
+ *
+ * Use Node environment for server-side tests to avoid loading browser libraries.
+ * This needs to be the top comment in the file
+ */
 /* eslint-disable no-return-assign, no-param-reassign */
 import { testApiHandler } from "next-test-api-route-handler";
 import { knex } from "../../knex/knex";
 import plannedTripEndpoint from "../pages/api/plannedTrip/index";
 
-describe.skip("Cutts API", () => {
+describe("Cutts API", () => {
 
     beforeAll(
         () => 
@@ -30,7 +36,7 @@ describe.skip("Cutts API", () => {
             test: async ({ fetch }) => {
                 // Test endpoint with mock fetch
                 const res = await fetch();
-                console.log(res.json())
+                // decide how to implement this test 
             }
         })
     })
