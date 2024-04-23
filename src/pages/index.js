@@ -11,6 +11,7 @@ export default function Home() {
   const handleClick = (comm) => {
     router.push(`/${comm}`);
   };
+
   return (
     <>
       <Head>

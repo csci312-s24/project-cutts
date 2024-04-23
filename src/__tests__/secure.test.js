@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { useSession, SessionProvider } from "next-auth/react";
-import App from "./_app";
-import Secure from "./secure";
+import App from "../pages/_app";
+import Secure from "../pages/secure";
 
 // Mock the NextAuth package
 jest.mock("next-auth/react");
