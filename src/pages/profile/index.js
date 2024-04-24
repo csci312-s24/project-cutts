@@ -1,10 +1,13 @@
-import styles from "@/styles/Home.module.css";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
+import HomeIcon from "@mui/icons-material/Home";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import theme, { HomeButton, Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 import UserShape from "../../components/UserShape";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Profile({
   User = {
@@ -30,38 +33,40 @@ export default function Profile({
   const hasCar = true;
 
   return (
-    <div className={styles.component}>
-      <div>
-        <div className={styles.grid}>
-          <button
-            type="button"
-            className={styles.homeButton}
-            onClick={() => handleClick("")}
-          >
-            <h2 className={inter.className}>Home</h2>
-          </button>
-          <button
-            type="button"
-            className={styles.card}
-            onClick={() => toProfileEditor()}
-          >
-            <h2 className={inter.className}>
-              Edit Profile <span>-&gt;</span>
-            </h2>
-          </button>
-        </div>
-      </div>
-      <h1 className={inter.className}>Profile Information</h1>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <HomeButton
+        variant="outlined"
+        size="medium"
+        endIcon={<HomeIcon />}
+        onClick={() => handleClick("")}
+      >
+        Home
+      </HomeButton>
 
-      <div>
+      <Container sx={{ mt: 10 }}>
+        <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
+          Profile
+        </Typography>
+        <Typography variant="h5" align="left">
+          Personal Info:
+        </Typography>
         <ul>Name: </ul>
         <ul>Email: </ul>
         <ul>Phone Number: </ul>
         <ul>Grad Year: </ul>
-
         {hasCar && <CarInfo car={User} />}
-      </div>
-    </div>
+        <Button
+          variant="contained"
+          onClick={() => toProfileEditor()}
+          sx={{ left: "7px" }}
+        >
+          {" "}
+          Edit Profile
+        </Button>
+      </Container>
+      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
+    </ThemeProvider>
   );
 }
 

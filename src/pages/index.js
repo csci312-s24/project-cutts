@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { styled, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { AppCacheProvider } from "@mui/material-nextjs/v13-pagesRouter";
 import Container from "@mui/material/Container";
@@ -9,22 +9,7 @@ import { Button, ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import theme from "../material/theme";
-
-const ProfileButton = styled(Button)({
-  position: "absolute",
-  top: "7px",
-  right: "7px",
-});
-
-const Footer = styled("footer")(({ theme: styledTheme }) => ({
-  borderTop: "1px solid #eaeaea",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  marginTop: styledTheme.spacing(5),
-  paddingTop: styledTheme.spacing(2),
-}));
+import theme, { ProfileButton, Footer } from "../material/theme";
 
 export default function Home() {
   const router = useRouter();
@@ -40,8 +25,8 @@ export default function Home() {
         <CssBaseline />
         <main>
           <div>
-            <Container>
-              <Typography variant="h3" align="center">
+            <Container sx={{ mt: 20 }}>
+              <Typography variant="h3" align="center" sx={{ color: "#0C4C7F" }}>
                 Midd Rideshare
               </Typography>
               <p align="center">
@@ -64,6 +49,7 @@ export default function Home() {
             justifyContent="center"
             display="flex"
             flexDirection="column"
+            sx={{ mt: 1 }}
           >
             <ButtonGroup variant="contained" size="large">
               <Button
@@ -82,7 +68,7 @@ export default function Home() {
           </Box>
         </main>
 
-        <Footer>CS 312 Cutts Footer</Footer>
+        <Footer>CS 312 - Spring 2024 - Cutts</Footer>
       </ThemeProvider>
     </AppCacheProvider>
   );

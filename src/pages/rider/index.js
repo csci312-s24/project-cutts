@@ -1,8 +1,11 @@
-import styles from "@/styles/Home.module.css";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
-
-const inter = Inter({ subsets: ["latin"] });
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import HomeIcon from "@mui/icons-material/Home";
+import theme, { ProfileButton, HomeButton, Footer } from "../../material/theme";
 
 export default function Rider() {
   const router = useRouter();
@@ -10,26 +13,31 @@ export default function Rider() {
     router.push(`/${comm}`);
   };
   return (
-    <div className={styles.component}>
-      <div className={styles.grid}>
-        <button
-          type="button"
-          className={styles.profileButton}
-          onClick={() => handleClick("profile")}
-        >
-          <h2 className={inter.className}>Profile</h2>
-        </button>
-        <button
-          type="button"
-          className={styles.homeButton}
-          onClick={() => handleClick("")}
-        >
-          <h2 className={inter.className}>Home</h2>
-        </button>
-      </div>
-      <h1 className={inter.className}>Rider Portal</h1>
-
-      <p>Planned Trips</p>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ProfileButton
+        variant="outlined"
+        size="medium"
+        endIcon={<AccountBoxIcon />}
+        onClick={() => handleClick("profile")}
+      >
+        Profile
+      </ProfileButton>
+      <HomeButton
+        variant="outlined"
+        size="medium"
+        endIcon={<HomeIcon />}
+        onClick={() => handleClick("")}
+      >
+        Home
+      </HomeButton>
+      <Container sx={{ mt: 10 }}>
+        <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
+          Rider Portal
+        </Typography>
+        <p align="left">Planned Trips</p>
+      </Container>
+      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
+    </ThemeProvider>
   );
 }
