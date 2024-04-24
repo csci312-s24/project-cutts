@@ -1,7 +1,15 @@
 import { render } from "@testing-library/react";
+import { useSession, SessionProvider } from "next-auth/react";
 import Home from "@/pages/index";
 import mockRouter from "next-router-mock";
 import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
+
+
+
+// Mock the NextAuth package
+jest.mock("next-auth/react");
+
+
 
 // Code from Micheal Linderman, main.test.js Assignment 4
 // Replace the router with the mock
@@ -19,7 +27,19 @@ mockRouter.useParser(
 );
 
 describe("End-to-end testing", () => {
+  afterEach(() => {
+    // Clear all mocks between tests
+    jest.resetAllMocks();
+  });
+
   test("Render index.js component", () => {
+
+    SessionProvider.mockImplementation(({ children }) => (
+      <mock-provider>{children}</mock-provider>
+    ));
+
+    useSession.mockReturnValue({ data: null, status: "unauthenticated" });
+
     render(<Home />);
   });
 
