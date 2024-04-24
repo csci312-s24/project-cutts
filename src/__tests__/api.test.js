@@ -9,6 +9,8 @@ import { testApiHandler } from "next-test-api-route-handler";
 import { knex } from "../../knex/knex";
 import plannedTripsEndpoint from "../pages/api/plannedTrip/index";
 import plannedTripEndpoint from "../pages/api/plannedTrip/[id]";
+import proposedTripsEndpoint from "../pages/api/proposedTrip/index";
+import proposedTripEndpoint from "../pages/api/proposedTrip/[id]";
 
 describe("Cutts API", () => {
   beforeAll(
@@ -62,6 +64,38 @@ describe("Cutts API", () => {
         const res = await fetch();
         const data = await res.json();
         expect(data).toMatchObject(trip1);
+      },
+    });
+  });
+
+  test("GET /api/proposedTrip should return all trips with dates that haven't happened yet", async () => {
+    await testApiHandler({
+      rejectOnHandlerError: true,
+      pagesHandler: proposedTripsEndpoint,
+      test: async ({ fetch }) => {
+        const res = await fetch();
+        expect(res.json()).resolves.toHaveLength(2);
+      },
+    });
+  });
+
+  test("GET /api/proposedTrip/id should return the trip with the corresponding id", async () => {
+    const trip2 = {
+      id: 2,
+      proposer: 1,
+      dest: "Miami",
+      date: expect.any(String),
+      timeFrame: "night",
+      message: "I want a ride to Miami on June 22nd, 2024. Will pay!",
+    };
+
+    await testApiHandler({
+      rejectOnHandlerError: true,
+      pagesHandler: proposedTripEndpoint,
+      params: { id: 2 },
+      test: async ({ fetch }) => {
+        const res = await fetch();
+        expect(res.json()).resolves.toMatchObject(trip2);
       },
     });
   });

@@ -1,7 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { createRouter } from "next-connect";
-import ProposedTrip from "../../../../models/PlannedTrip";
+import { onError } from "../../../../lib/middleware";
+import ProposedTrip from "../../../../models/ProposedTrip";
 
 const router = createRouter();
 
@@ -20,3 +21,5 @@ router
     );
     res.status(200).json(proposedTrip);
   });
+
+export default router.handler({ onError });

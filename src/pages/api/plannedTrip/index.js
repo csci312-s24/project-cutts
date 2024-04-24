@@ -5,7 +5,7 @@ import { onError } from "../../../../lib/middleware";
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const currentDate = Date.now();
+  const currentDate = new Date();
   const plannedTrips = await PlannedTrip.query().where(
     "date",
     ">",
