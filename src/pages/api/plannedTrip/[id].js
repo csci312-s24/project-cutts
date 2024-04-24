@@ -17,7 +17,7 @@ router
   .put(async (req, res) => {
     const session = await getServerSession(req, res, authOptions);
     if (session) {
-      // Perform insert and send new planned trip
+      // Perform insert and send edited planned trip
       const { id, ...editedPlannedTrip } = req.body;
       const plannedTrip = await PlannedTrip.query().updateAndFetchById(
         id,
