@@ -3,6 +3,8 @@
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
+  const tomorrow = new Date();
+  const yesterday = new Date();
   // Deletes ALL existing entries
   await knex("User").del();
   await knex.raw('ALTER SEQUENCE "User_id_seq" RESTART WITH 1');
@@ -27,7 +29,7 @@ exports.seed = async function (knex) {
     {
       planner: 1,
       dest: "Boston",
-      date: "2024-05-20T10:00:00Z",
+      date: tomorrow.setDate(tomorrow.getDate() + 1),
       timeFrame: "morning",
       seatNumber: 3,
       message:
@@ -36,7 +38,7 @@ exports.seed = async function (knex) {
     {
       planner: 2,
       dest: "New York",
-      date: "2024-04-20T12:00:00Z",
+      date: yesterday.setDate(yesterday.getDate() - 1),
       timeFrame: "afternoon",
       seatNumber: 2,
       message:
