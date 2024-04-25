@@ -1,8 +1,9 @@
-import styles from "@/styles/Home.module.css";
-
 import { useRouter } from "next/router";
 import { createRouter } from "next-connect";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import AppUserProfileEdit from "../components/AppUserProfileEdit";
+import theme from "../material/theme";
 
 export default function EditProfile() {
   const router = useRouter();
@@ -29,8 +30,9 @@ export default function EditProfile() {
   };
 
   return (
-    <div className={styles.component}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <AppUserProfileEdit appUser={ExampleUser} complete={complete} />
-    </div>
+    </ThemeProvider>
   );
 }
