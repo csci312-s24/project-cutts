@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import { SessionProvider } from "next-auth/react";
 import "@/styles/globals.css";
 
-export default function App({ 
-  Component, 
-  pageProps: { session, ...pageProps},
- }) {
+// {
+//   Component,
+//   pageProps: { session, ...pageProps},
+//  }
+
+export default function App(appProps) {
+  const { Component, pageProps } = appProps;
+  const { session } = pageProps;
+
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />;
@@ -17,5 +22,5 @@ export default function App({
 App.propTypes = {
   Component: PropTypes.elementType.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pageProps: PropTypes.shape({session: PropTypes.object}), 
+  pageProps: PropTypes.shape({ session: PropTypes.object }),
 };

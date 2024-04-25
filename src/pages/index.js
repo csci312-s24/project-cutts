@@ -1,74 +1,75 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
-import LoginWidget from "@/components/LoginWidget";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { AppCacheProvider } from "@mui/material-nextjs/v13-pagesRouter";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import { Button, ButtonGroup, Box } from "@mui/material";
+import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import theme, { ProfileButton, Footer } from "../material/theme";
 
 export default function Home() {
   const router = useRouter();
   const handleClick = (comm) => {
     router.push(`/${comm}`);
   };
-
   return (
-    <>
+    <AppCacheProvider>
       <Head>
         <title>Cutts App</title>
       </Head>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <main>
+          <div>
+            <Container sx={{ mt: 20 }}>
+              <Typography variant="h3" align="center" sx={{ color: "#0C4C7F" }}>
+                Midd Rideshare
+              </Typography>
+              <p align="center">
+                Get rides to Burlington, Boston, or wherever else you may need
+                to go!
+              </p>
+            </Container>
+          </div>
 
-      <main className={styles.main}>
-        <div className={styles.title}>
-          <h1 className={inter.className}>Midd Rideshare</h1>
-          <p className={inter.className}>
-            Get rides to Burlington, Boston, or wherever else you may need to
-            go!
-          </p>
-          <LoginWidget />
-        </div>
-
-        <button
-          type="button"
-          className={styles.profileButton}
-          onClick={() => handleClick("profile")}
-        >
-          <h2 className={inter.className}>Profile</h2>
-        </button>
-
-        <div className={styles.grid}>
-          {/* <button
-            type="button"
-            className={styles.card}
+          <ProfileButton
+            variant="outlined"
+            size="medium"
+            endIcon={<AccountBoxIcon />}
             onClick={() => handleClick("profile")}
           >
-            <h2 className={inter.className}>
-              Profile <span>-&gt;</span>
-            </h2>
-          </button> */}
-          <button
-            type="button"
-            className={styles.card}
-            onClick={() => handleClick("driver")}
+            Profile
+          </ProfileButton>
+          <Box
+            alignItems="center"
+            justifyContent="center"
+            display="flex"
+            flexDirection="column"
+            sx={{ mt: 1 }}
           >
-            <h2 className={inter.className}>
-              Driver Portal<span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>View Proposed Trips</p>
-          </button>
+            <ButtonGroup variant="contained" size="large">
+              <Button
+                onClick={() => handleClick("rider")}
+                endIcon={<DirectionsCarIcon />}
+              >
+                Planned Trips
+              </Button>
+              <Button
+                onClick={() => handleClick("driver")}
+                endIcon={<AirportShuttleIcon />}
+              >
+                Driver Portal
+              </Button>
+            </ButtonGroup>
+          </Box>
+        </main>
 
-          <button
-            type="button"
-            className={styles.card}
-            onClick={() => handleClick("rider")}
-          >
-            <h2 className={inter.className}>
-              Rider Portal<span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>View Planned Trips</p>
-          </button>
-        </div>
-      </main>
-    </>
+        <Footer>CS 312 - Spring 2024 - Cutts</Footer>
+      </ThemeProvider>
+    </AppCacheProvider>
   );
 }
