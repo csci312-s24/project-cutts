@@ -8,8 +8,6 @@ import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
 import theme, { ProfileButton, HomeButton, Footer } from "../../material/theme";
 
-// import ProfileButton from "/../index.js"
-
 export default function Driver() {
   const router = useRouter();
   const handleClick = (comm) => {
