@@ -4,6 +4,7 @@
  * Use Node environment for server-side tests to avoid loading browser libraries.
  * This needs to be the top comment in the file
  */
+
 /* eslint-disable no-return-assign, no-param-reassign */
 import { testApiHandler } from "next-test-api-route-handler";
 import { knex } from "../../knex/knex";
