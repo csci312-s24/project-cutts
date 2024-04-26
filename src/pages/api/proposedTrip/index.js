@@ -1,4 +1,5 @@
-import { createRouter } from "next-connect";
+import { createRouter, onError } from "next-connect";
+import authenticated from "@/lib/middleware";
 import ProposedTrip from "../../../../models/PlannedTrip";
 
 const router = createRouter();
@@ -13,7 +14,9 @@ router.get(async (req, res) => {
   res.status(200).json(proposedTrips);
 });
 
-router.post(async (req, res) => {
+router.post(authenticated, async (req, res) => {
   const proposedTrip = await ProposedTrip.query().insertAndFetch(req.body);
   res.status(200).json(proposedTrip);
 });
+
+export default router.handler({ onError });

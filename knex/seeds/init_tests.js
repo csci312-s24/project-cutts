@@ -10,13 +10,15 @@ exports.seed = async function (knex) {
     {
       email: "dtyrie@middlebury.edu",
       name: "Devon Tyrie",
-      num: "6177747109",
+      num: "1",
+      googleId: "dtyrie",
       year: 2025,
     },
     {
       email: "lkosowsky@middlebury.edu",
       name: "Lila Kosowsky",
-      num: "7812498085",
+      num: "2",
+      googleId: "lkosowsky",
       year: 2024,
     },
   ]);

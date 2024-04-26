@@ -14,6 +14,9 @@ export default function NewRide() {
 
   const complete = async (PlannedTrip) => {
     if (PlannedTrip) {
+      console.log(PlannedTrip);
+      console.log("Test post");
+
       // POST call to the database to update with the newly created Planned Trip
       const response = await fetch(`/api/plannedTrip`, {
         method: "POST",
@@ -23,6 +26,7 @@ export default function NewRide() {
           "Content-Type": "application/json",
         }),
       });
+      console.log(await response);
       if (response.ok) {
         const createdPlannedTrip = await response.json();
         // how to implement the create PlannedTrip to database??
