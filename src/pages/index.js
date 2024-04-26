@@ -10,6 +10,7 @@ import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import theme, { ProfileButton, Footer } from "../material/theme";
+import LoginWidget from "../components/LoginWidget";
 
 export default function Home() {
   const router = useRouter();
@@ -51,6 +52,9 @@ export default function Home() {
             flexDirection="column"
             sx={{ mt: 1 }}
           >
+            <div>
+              <LoginWidget />
+            </div>
             <ButtonGroup variant="contained" size="large">
               <Button
                 onClick={() => handleClick("rider")}
