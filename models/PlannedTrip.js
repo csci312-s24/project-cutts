@@ -12,20 +12,27 @@ export default class PlannedTrip extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["planner, dest, date, timeFrame, seatNumber"],
+      required: [
+        "driverNameInput",
+        "destinationInput",
+        "departureDateInput",
+        "departureTimeInput",
+        "seatInput",
+      ],
 
       properties: {
         id: { type: "integer" },
-        planner: { type: "integer" }, // this should be the user ID of the planner
-        dest: { type: "string" },
-        date: { type: "string", format: "date-time" },
-        timeFrame: { type: "string", enum: ["morning", "afternoon", "night"] },
-        seatNumber: {
+        driverNameInput: { type: "string" }, // this should be the user ID of the planner
+        destinationInput: { type: "string" },
+        departureDateInput: { type: "string", format: "date-time" },
+        departureTimeInput: { type: "string", format: "date-time" },
+        departureLocationInput: { type: "string" },
+        seatInput: {
           type: "integer",
           minimum: 0,
           maximum: 12,
         },
-        message: { type: "string" },
+        messageInput: { type: "string" },
       },
     };
   }

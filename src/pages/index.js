@@ -9,6 +9,7 @@ import { Button, ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import LoginWidget from "@/components/LoginWidget";
 import theme, { ProfileButton, Footer } from "../material/theme";
 
 export default function Home() {
@@ -51,6 +52,9 @@ export default function Home() {
             flexDirection="column"
             sx={{ mt: 1 }}
           >
+            <div>
+              <LoginWidget />
+            </div>
             <ButtonGroup variant="contained" size="large">
               <Button
                 onClick={() => handleClick("rider")}

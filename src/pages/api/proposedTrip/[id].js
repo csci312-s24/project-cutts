@@ -1,8 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { createRouter } from "next-connect";
-import { onError } from "../../../../lib/middleware";
-import ProposedTrip from "../../../../models/ProposedTrip";
+import { createRouter, onError } from "next-connect";
+import authenticated from "@/lib/middleware";
+
+import ProposedTrip from "../../../../models/PlannedTrip";
 
 const router = createRouter();
 
@@ -13,7 +14,7 @@ router
       .throwIfNotFound();
     res.status(200).json(proposedTrip);
   })
-  .put(async (req, res) => {
+  .put(authenticated, async (req, res) => {
     const { id, ...editedProposedTrip } = req.body;
     const proposedTrip = await ProposedTrip.query().updateAndFetchById(
       id,
