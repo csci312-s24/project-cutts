@@ -3,16 +3,17 @@ exports.up = function (knex) {
   return knex.schema.createTable("PlannedTrip", (table) => {
     table.increments("id").primary();
     table
-      .integer("planner")
+      .integer("driverNameInput")
       .references("id")
       .inTable("User")
       .notNullable()
       .onDelete("cascade");
-    table.string("dest").notNullable();
+    table.string("destinationInput").notNullable();
     table.string("date");
-    table.string("timeFrame");
-    table.integer("seatNumber").defaultTo(0);
-    table.string("message").defaultTo("");
+    table.string("departureTimeInput");
+    table.string("departureLocationInput");
+    table.integer("seatInput").defaultTo(0);
+    table.string("messageInput").defaultTo("");
   });
 };
 
