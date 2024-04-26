@@ -3,13 +3,6 @@
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const twoDays = new Date();
-  twoDays.setDate(twoDays.getDate() + 2);
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-
   // Deletes ALL existing entries
   await knex("User").del();
   await knex.raw('ALTER SEQUENCE "User_id_seq" RESTART WITH 1');
@@ -34,7 +27,7 @@ exports.seed = async function (knex) {
     {
       planner: 1,
       dest: "Boston",
-      date: tomorrow,
+      date: "2024-05-20T10:00:00Z",
       timeFrame: "morning",
       seatNumber: 3,
       message:
@@ -43,7 +36,7 @@ exports.seed = async function (knex) {
     {
       planner: 2,
       dest: "New York",
-      date: yesterday,
+      date: "2024-04-20T12:00:00Z",
       timeFrame: "afternoon",
       seatNumber: 2,
       message:
@@ -57,14 +50,14 @@ exports.seed = async function (knex) {
     {
       proposer: 2,
       dest: "Burlington",
-      date: tomorrow,
+      date: "2024-05-22T15:30:00Z",
       timeFrame: "afternoon",
       message: "I want a ride to Burlington on May 22nd, 2024. Will pay!",
     },
     {
       proposer: 1,
       dest: "Miami",
-      date: twoDays,
+      date: "2024-06-22T20:30:00Z",
       timeFrame: "night",
       message: "I want a ride to Miami on June 22nd, 2024. Will pay!",
     },
