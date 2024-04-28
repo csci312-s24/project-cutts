@@ -12,7 +12,13 @@ export default class PlannedTrip extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["planner, dest, date, timeFrame, seatNumber"],
+      required: [
+        "driverNameInput",
+        "destinationInput",
+        "departureTimeInput",
+        "departureLocationInput",
+        "seatInput",
+      ],
 
       properties: {
         id: { type: "integer" },
