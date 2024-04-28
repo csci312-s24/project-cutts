@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import CreatePlannedTrip from "../components/CreatePlannedTrip";
+import CreatePlannedTrip from "../../components/CreatePlannedTrip";
 
 export default function NewRide() {
   const router = useRouter();

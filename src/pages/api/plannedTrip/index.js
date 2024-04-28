@@ -2,11 +2,12 @@ import { createRouter } from "next-connect";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]";
 import PlannedTrip from "../../../../models/PlannedTrip";
+import { onError } from "../../../../lib/middleware";
 
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const currentDate = Date.now();
+  const currentDate = new Date();
   const plannedTrips = await PlannedTrip.query().where(
     "date",
     ">",

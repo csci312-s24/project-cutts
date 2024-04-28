@@ -5,11 +5,14 @@
     car - the AppUser's car
 */
 import PropTypes from "prop-types";
+import Typography from "@mui/material/Typography";
 
 export default function CarInfo({ car }) {
   return (
     <div>
-      <h2>Car Info: </h2>
+      <Typography variant="h5" align="left">
+        Car Info:
+      </Typography>
       <ul>Year: {car.year}</ul>
       <ul>Make: {car.make}</ul>
       <ul>Model: {car.model}</ul>

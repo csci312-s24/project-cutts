@@ -5,9 +5,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import theme, { HomeButton, Footer } from "../material/theme";
-import CarInfo from "../components/CarInfo";
-import UserShape from "../components/UserShape";
+import theme, { HomeButton, Footer } from "../../material/theme";
+import CarInfo from "../../components/CarInfo";
+import UserShape from "../../components/UserShape";
 
 export default function Profile({
   User = {
@@ -26,7 +26,7 @@ export default function Profile({
 
   // editing profile
   const toProfileEditor = () => {
-    router.push(`/editProfile`);
+    router.push(`/profile/edit`);
   };
 
   // hardcoded for now - normally get these from the AppUser prop

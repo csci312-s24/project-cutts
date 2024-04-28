@@ -3,6 +3,7 @@
 import { createRouter } from "next-connect";
 import { getServerSession } from "next-auth/next";
 import PlannedTrip from "../../../../models/PlannedTrip";
+import { onError } from "../../../../lib/middleware";
 import { authOptions } from "../auth/[...nextauth]";
 
 const router = createRouter();
@@ -28,3 +29,5 @@ router
       res.status(403).end("You must be signed in to access this endpoint.");
     }
   });
+
+export default router.handler({ onError });
