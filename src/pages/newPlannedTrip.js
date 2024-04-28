@@ -24,9 +24,8 @@ export default function NewRide() {
         }),
       });
       if (response.ok) {
-        const createdPlannedTrip = await response.json();
-        // how to implement the create PlannedTrip to database??
-        router.push(`/plannedTrip/${createdPlannedTrip.id}`); // will this work? idk if our URL is set up like this
+        // const createdPlannedTrip = await response.json();
+        router.push(`/driver`);
       } else {
         console.log("Error: Failed to create the planned trip"); // eslint-disable-line no-console
       }
