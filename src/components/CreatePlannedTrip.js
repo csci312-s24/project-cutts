@@ -32,11 +32,9 @@ export default function CreatePlannedTrip({ driver, complete }) {
   const [seatInput, setSeatInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
 
-  const driverID = 11; // this is really driver.id
-  const id = 11;
+  const driverID = 24; // this is really driver.id
   const handleSaveClick = () => {
     const plannedTrip = {
-      id,
       driverID,
       destinationInput,
       departureTimeInput,
@@ -118,17 +116,6 @@ export default function CreatePlannedTrip({ driver, complete }) {
             }
             onChange={(event) => setSeatInput(event.target.value)}
           />
-
-          {/* <NumberInput
-          min={0}
-          max={12}
-          type="number"
-          id="seatInput"
-          aria-label="How many seats do you have in your car "
-          placeholder="Available seats in your car"
-          value={seatInput}
-          onChange={(event, val) => setSeatInput(val)}
-        />  */}
 
           <TextField
             id="message"

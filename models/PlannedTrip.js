@@ -27,9 +27,10 @@ export default class PlannedTrip extends BaseModel {
         departureTimeInput: { type: "string" },
         departureLocationInput: { type: "string" },
         seatInput: {
-          type: "integer",
-          minimum: 0,
-          maximum: 12,
+          type: "string",
+          // minimum: 0,
+          // maximum: 12,
+          // MaterialUI has seatInput as a string... we want it to be a number or int
         },
         messageInput: { type: "string" },
       },
