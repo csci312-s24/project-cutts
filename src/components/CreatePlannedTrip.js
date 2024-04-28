@@ -65,14 +65,6 @@ export default function CreatePlannedTrip({ driver, complete }) {
         <div className={styles.form}>
           <TextField
             required
-            id="driverNameInput"
-            label="Your name"
-            error={!driverNameInput}
-            helperText={!driverNameInput ? "DriverName can't be blank" : " "}
-            onChange={(event) => setDriverNameInput(event.target.value)}
-          />
-          <TextField
-            required
             id="destinationInput"
             label="Where are you headed"
             error={!destinationInput}

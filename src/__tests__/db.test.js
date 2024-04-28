@@ -44,9 +44,12 @@ describe("Cutts DB", () => {
       const plannedTrips = await PlannedTrip.query();
       expect(plannedTrips.length).toBe(2);
     });
-    test("Query plannedTrip by dest", async () => {
-      const plannedTrips = await PlannedTrip.query().where("dest", "Boston");
-      expect(plannedTrips[0].dest).toBe("Boston");
+    test("Query plannedTrip by destinationInput", async () => {
+      const plannedTrips = await PlannedTrip.query().where(
+        "destinationInput",
+        "Boston",
+      );
+      expect(plannedTrips[0].destinationInput).toBe("Boston");
     });
     test("Querying proposedTrips", async () => {
       const proposedTrips = await ProposedTrip.query();
