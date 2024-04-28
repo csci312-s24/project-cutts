@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
-  // Deletes ALL existing entries
+  // Deletes ALL existing entires
   await knex("User").del();
   await knex.raw('ALTER SEQUENCE "User_id_seq" RESTART WITH 1');
   await knex("User").insert([
