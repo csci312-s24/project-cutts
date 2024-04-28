@@ -32,21 +32,21 @@ exports.seed = async function (knex) {
   await knex.raw('ALTER SEQUENCE "PlannedTrip_id_seq" RESTART WITH 1');
   await knex("PlannedTrip").insert([
     {
-      planner: 1,
-      dest: "Boston",
+      driverID: 1,
+      destinationInput: "Boston",
       date: tomorrow,
-      timeFrame: "morning",
-      seatNumber: 3,
-      message:
+      departureTimeInput: "morning",
+      seatInput: 3,
+      messageInput:
         "I'm driving to Boston on May 20th, 2024. I have 3 seats available.",
     },
     {
-      planner: 2,
-      dest: "New York",
+      driverID: 2,
+      destinationInput: "New York",
       date: yesterday,
-      timeFrame: "afternoon",
-      seatNumber: 2,
-      message:
+      departureTimeInput: "afternoon",
+      seatInput: 2,
+      messageInput:
         "I'm driving to New York on on April 20th, 2024. I have 2 seats available. We will stop twice along the way.",
     },
   ]);

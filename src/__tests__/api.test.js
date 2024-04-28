@@ -47,12 +47,11 @@ describe("Cutts API", () => {
   test("GET /api/plannedTrip/id should return the trip with the corresponding index", async () => {
     const trip1 = {
       id: 1,
-      planner: 1,
-      dest: "Boston",
+      driverID: 1,
+      destinationInput: "Boston",
       date: expect.any(String),
-      timeFrame: "morning",
-      seatNumber: 3,
-      message:
+      seatInput: 3,
+      messageInput:
         "I'm driving to Boston on May 20th, 2024. I have 3 seats available.",
     };
 

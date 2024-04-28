@@ -26,13 +26,12 @@ export default class PlannedTrip extends BaseModel {
         destinationInput: { type: "string" },
         departureTimeInput: { type: "string" },
         departureLocationInput: { type: "string" },
-        timeFrame: { type: "string", enum: ["morning", "afternoon", "night"] },
-        seatNumber: {
+        seatInput: {
           type: "integer",
           minimum: 0,
           maximum: 12,
         },
-        message: { type: "string" },
+        messageInput: { type: "string" },
       },
     };
   }
