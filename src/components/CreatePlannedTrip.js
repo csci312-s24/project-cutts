@@ -18,8 +18,8 @@ export default function CreatePlannedTrip({ driver, complete }) {
   const [seatInput, setSeatInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
 
-  const driverID = 1; // driver.id
-  const id = 2;
+  const driverID = 4; // driver.id
+  const id = 6;
   const handleSaveClick = () => {
     const plannedTrip = {
       id,
