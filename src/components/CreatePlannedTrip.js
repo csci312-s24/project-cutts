@@ -10,9 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 // just for creating planned trips - need to make separate React component for editing them
 export default function CreatePlannedTrip({ driver, complete }) {
   // states for inputs (driver - name, destination, departure time, departure location, number of open seats)
-  const [driverNameInput, setDriverNameInput] = useState(
-    driver ? driver.name : "",
-  );
+
   const [destinationInput, setDestinationInput] = useState("");
   const [departureTimeInput, setDepartureTimeInput] = useState("");
   const [departureDateInput, setDepartureDateInput] = useState("");
@@ -20,9 +18,12 @@ export default function CreatePlannedTrip({ driver, complete }) {
   const [seatInput, setSeatInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
 
+  const driverID = 1; // driver.id
+  const id = 2;
   const handleSaveClick = () => {
     const plannedTrip = {
-      driverNameInput,
+      id,
+      driverID,
       destinationInput,
       departureTimeInput,
       departureLocationInput,
@@ -33,7 +34,6 @@ export default function CreatePlannedTrip({ driver, complete }) {
   };
 
   const canSave =
-    driverNameInput &&
     destinationInput &&
     departureTimeInput &&
     departureLocationInput &&
@@ -45,15 +45,6 @@ export default function CreatePlannedTrip({ driver, complete }) {
     <div className={styles.component}>
       <h1 className={inter.className}>Plan a Trip</h1>
       <div className={styles.form}>
-        <div>
-          <input
-            type="text"
-            id="DriverName"
-            placeholder="Your name"
-            value={driverNameInput}
-            onChange={(event) => setDriverNameInput(event.target.value)}
-          />
-        </div>
         <div>
           <input
             type="text"

@@ -3,7 +3,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("PlannedTrip", (table) => {
     table.increments("id").primary();
     table
-      .integer("driverNameInput")
+      .integer("driverID")
       .references("id")
       .inTable("User")
       .notNullable()
