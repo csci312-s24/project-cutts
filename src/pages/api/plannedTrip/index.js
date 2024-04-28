@@ -1,7 +1,6 @@
 import { createRouter } from "next-connect";
 import authenticated from "@/lib/middleware";
 import PlannedTrip from "../../../../models/PlannedTrip";
-import { onError } from "../../../../lib/middleware";
 
 const router = createRouter();
 
