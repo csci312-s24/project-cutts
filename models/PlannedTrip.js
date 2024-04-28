@@ -12,13 +12,20 @@ export default class PlannedTrip extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["planner, dest, date, timeFrame, seatNumber"],
+      required: [
+        "driverID",
+        "destinationInput",
+        "departureTimeInput",
+        "departureLocationInput",
+        "seatInput",
+      ],
 
       properties: {
         id: { type: "integer" },
-        planner: { type: "integer" }, // this should be the user ID of the planner
-        dest: { type: "string" },
-        date: { type: "string", format: "date-time" },
+        driverID: { type: "integer" }, // this should be the user ID of the planner
+        destinationInput: { type: "string" },
+        departureTimeInput: { type: "string" },
+        departureLocationInput: { type: "string" },
         timeFrame: { type: "string", enum: ["morning", "afternoon", "night"] },
         seatNumber: {
           type: "integer",
@@ -35,7 +42,7 @@ export default class PlannedTrip extends BaseModel {
       relation: Model.BelongsToOneRelation,
       modelClass: PlannedTrip, // eslint-disable-line no-use-before-define
       join: {
-        from: "PlannedTrip.planner", // will this work ?
+        from: "PlannedTrip.driverID", // will this work ?
         to: "User.id",
       },
     },

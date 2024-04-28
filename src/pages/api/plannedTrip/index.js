@@ -21,4 +21,4 @@ router.post(authenticated, async (req, res) => {
   res.status(200).json(plannedTrip);
 });
 
-export default router.handler({ onError });
+export default router.handler({});
