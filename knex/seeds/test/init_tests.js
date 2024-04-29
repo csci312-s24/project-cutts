@@ -15,12 +15,14 @@ exports.seed = async function (knex) {
   await knex.raw('ALTER SEQUENCE "User_id_seq" RESTART WITH 1');
   await knex("User").insert([
     {
+      driverID: 1,
       email: "dtyrie@middlebury.edu",
       name: "Devon Tyrie",
       num: "6177747109",
       year: 2025,
     },
     {
+      driverID: 2,
       email: "lkosowsky@middlebury.edu",
       name: "Lila Kosowsky",
       num: "7812498085",
