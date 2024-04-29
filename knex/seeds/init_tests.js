@@ -28,8 +28,8 @@ exports.seed = async function (knex) {
       driverID: 1,
       destinationInput: "Boston",
       date: "2024-05-20T10:00:00Z",
-      timeFrame: "morning",
-      seatNumber: 3,
+      departureTimeInput: "morning",
+      seatInput: 3,
       messageInput:
         "I'm driving to Boston on May 20th, 2024. I have 3 seats available.",
     },
@@ -37,8 +37,8 @@ exports.seed = async function (knex) {
       driverID: 2,
       destinationInput: "New York",
       date: "2024-04-20T12:00:00Z",
-      timeFrame: "afternoon",
-      seatNumber: 2,
+      departureTimeInput: "afternoon",
+      seatInput: 2,
       messageInput:
         "I'm driving to New York on on April 20th, 2024. I have 2 seats available. We will stop twice along the way.",
     },
