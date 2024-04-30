@@ -7,13 +7,13 @@ import theme from "../../material/theme";
 
 export default function EditProfile() {
   const router = useRouter();
-  const ExampleUser = {
-    name: "Mihir",
-    num: 212,
-    year: 2024,
-    email: "mbsingh@middlebury.edu",
-    id: 1,
-  };
+
+  let localUser;
+  fetch("/api/User")
+    .then((resp) => resp.json())
+    .then((data) => {
+      localUser = data;
+    });
 
   const complete = async (User) => {
     const createdRouter = createRouter();
@@ -32,7 +32,7 @@ export default function EditProfile() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppUserProfileEdit appUser={ExampleUser} complete={complete} />
+      <AppUserProfileEdit appUser={localUser} complete={complete} />
     </ThemeProvider>
   );
 }
