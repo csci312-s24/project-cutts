@@ -5,7 +5,7 @@ exports.up = function (knex) {
     table.string("email").unique().notNullable();
     table.string("name");
     table.string("num");
-    table.integer("year");
+    table.string("year");
   });
 };
 
