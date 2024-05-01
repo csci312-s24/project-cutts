@@ -1,21 +1,22 @@
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import PropTypes from "prop-types";
 import theme, { HomeButton, Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
-import UserShape from "../../components/UserShape";
 
 export default function Profile({
-  User = {
-    make: "Honda",
-    model: "CRV",
-    year: 2015,
-    plate: "MIDDCar1",
-    userID: 1,
+  ExampleCar = {
+    year: 2000,
+    make: "Toyota",
+    model: "Corolla",
+    plate: "123-ABC",
   },
 }) {
   // routing
@@ -28,6 +29,14 @@ export default function Profile({
   const toProfileEditor = () => {
     router.push(`/profile/edit`);
   };
+  const { data: session } = useSession();
+  const [localUser, setLocalUser] = useState("");
+  useEffect(() => {
+    if (!session) return;
+    fetch(`/api/User/${session.user.id}`)
+      .then((res) => res.json())
+      .then((data) => setLocalUser(data));
+  }, [session]);
 
   // hardcoded for now - normally get these from the AppUser prop
   const hasCar = true;
@@ -51,11 +60,11 @@ export default function Profile({
         <Typography variant="h5" align="left">
           Personal Info:
         </Typography>
-        <ul>Name: </ul>
-        <ul>Email: </ul>
-        <ul>Phone Number: </ul>
-        <ul>Grad Year: </ul>
-        {hasCar && <CarInfo car={User} />}
+        <ul>Name: {localUser.name} </ul>
+        <ul>Email: {localUser.email} </ul>
+        <ul>Phone Number: {localUser.num} </ul>
+        <ul>Grad Year: {localUser.year} </ul>
+        {hasCar && <CarInfo car={ExampleCar} />}
         <Button
           variant="contained"
           onClick={() => toProfileEditor()}
@@ -70,6 +79,14 @@ export default function Profile({
   );
 }
 
+// need help importing this from CarInfo.js instead of re-writing it
+const CarInfooShape = PropTypes.shape({
+  year: PropTypes.number.isRequired,
+  make: PropTypes.string.isRequired,
+  model: PropTypes.string.isRequired,
+  plate: PropTypes.string.isRequired,
+});
+
 Profile.propTypes = {
-  User: UserShape,
+  ExampleCar: CarInfooShape,
 };
