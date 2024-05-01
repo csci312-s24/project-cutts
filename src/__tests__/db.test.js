@@ -34,11 +34,11 @@ describe("Cutts DB", () => {
   describe("Querying tests", () => {
     test("Querying users", async () => {
       const users = await User.query();
-      expect(users.length).toBe(2);
+      expect(users.length).toBe(1);
     });
     test("Query user by ID", async () => {
-      const userByID = await User.query().findById(1);
-      expect(userByID.name).toBe("Devon Tyrie");
+      const userByID = await User.query().findById(0);
+      expect(userByID.name).toBe("Panther");
     });
     test("Query plannedTrips", async () => {
       const plannedTrips = await PlannedTrip.query();

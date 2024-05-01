@@ -10,7 +10,6 @@ export default function EditProfile() {
   const router = useRouter();
   const { data: session } = useSession();
   const [localUser, setLocalUser] = useState(null);
-  console.log(session);
 
   useEffect(() => {
     if (!session) return;
