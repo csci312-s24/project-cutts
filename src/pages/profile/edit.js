@@ -1,27 +1,31 @@
 import { useRouter } from "next/router";
-import { createRouter } from "next-connect";
+import { useSession } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useEffect, useState } from "react";
 import AppUserProfileEdit from "../../components/AppUserProfileEdit";
 import theme from "../../material/theme";
 
 export default function EditProfile() {
   const router = useRouter();
-  const ExampleUser = {
-    name: "Mihir",
-    num: 212,
-    year: 2024,
-    email: "mbsingh@middlebury.edu",
-    id: 1,
-  };
+  const { data: session } = useSession();
+  const [localUser, setLocalUser] = useState(null);
 
-  const complete = async (User) => {
-    const createdRouter = createRouter();
-    if (User) {
-      createdRouter.put(async (req, res) => {
-        const { id, ...userInfo } = req.body;
-        const user = await User.query().updateAndFetchById(id, userInfo);
-        res.status(200).json(user);
+  useEffect(() => {
+    if (!session) return;
+    fetch(`/api/User/${session.user.id}`)
+      .then((res) => res.json())
+      .then((data) => setLocalUser(data));
+  }, [session]);
+
+  const complete = async (thisUser) => {
+    if (thisUser) {
+      fetch(`/api/User/${thisUser.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(thisUser),
       });
       router.back();
     } else {
@@ -32,7 +36,9 @@ export default function EditProfile() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppUserProfileEdit appUser={ExampleUser} complete={complete} />
+      {localUser && (
+        <AppUserProfileEdit appUser={localUser} complete={complete} />
+      )}
     </ThemeProvider>
   );
 }

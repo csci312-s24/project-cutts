@@ -47,7 +47,7 @@ describe("Cutts API", () => {
   test("GET /api/plannedTrip/id should return the trip with the corresponding index", async () => {
     const trip1 = {
       id: 1,
-      driverID: 1,
+      driverID: 0,
       destinationInput: "Boston",
       date: expect.any(String),
       seatInput: 3,
@@ -81,7 +81,7 @@ describe("Cutts API", () => {
   test("GET /api/proposedTrip/id should return the trip with the corresponding id", async () => {
     const trip2 = {
       id: 2,
-      proposer: 1,
+      proposer: 0,
       dest: "Miami",
       date: expect.any(String),
       timeFrame: "night",

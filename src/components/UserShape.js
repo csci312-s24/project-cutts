@@ -9,11 +9,12 @@
 import PropTypes from "prop-types";
 
 const UserShape = PropTypes.shape({
+  id: PropTypes.num,
   name: PropTypes.string,
-  num: PropTypes.num,
-  year: PropTypes.num,
+  num: PropTypes.string,
+  year: PropTypes.string,
   email: PropTypes.string,
-  userID: PropTypes.num,
+  googleId: PropTypes.string,
 });
 
 export default UserShape;

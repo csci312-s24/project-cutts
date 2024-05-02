@@ -8,16 +8,16 @@ import UserShape from "./UserShape";
 
 export default function AppUserProfileEdit({ appUser, complete }) {
   // states for title and text inputs
-  const [nameInput, setNameInput] = useState(appUser ? appUser.name : "");
-  const [numInput, setNumInput] = useState(appUser ? appUser.num : "");
-  const [yearInput, setYearInput] = useState(appUser ? appUser.year : "");
+  const [nameInput, setNameInput] = useState(appUser.name ? appUser.name : "");
+  const [numInput, setNumInput] = useState(appUser.num ? appUser.num : "");
+  const [yearInput, setYearInput] = useState(appUser.year ? appUser.year : "");
 
   const handleSaveClick = () => {
     const newUserInfo = {
       ...appUser,
-      nameInput,
-      numInput,
-      yearInput,
+      name: nameInput,
+      num: numInput,
+      year: yearInput,
     };
     complete(newUserInfo);
   };
