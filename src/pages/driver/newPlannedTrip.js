@@ -5,10 +5,13 @@ import CreatePlannedTrip from "../../components/CreatePlannedTrip";
 export default function NewRide() {
   const router = useRouter();
   const { data: session } = useSession();
-  const driver = session.user.id;
+  let driver = -1;
+
+  if (session) {
+    driver = 0;
+  }
 
   const complete = async (PlannedTrip) => {
-    // console.log(PlannedTrip)
     if (PlannedTrip) {
       // POST call to the database to update with the newly created Planned Trip
       const response = await fetch(`/api/plannedTrip`, {

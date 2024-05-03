@@ -15,7 +15,7 @@ export default function PlannedTripsList({ plannedTrips }) {
             <b>{trip.destinationInput}</b>
           </Typography>
           <Typography>
-            Date: <b>{trip.date}</b>
+            Date: <b>{trip.date.slice(0, 10)}</b>
           </Typography>
           <Typography>
             Departure Time: <b>{trip.departureTimeInput}</b>
