@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
@@ -5,6 +6,7 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
+import PlannedTripsList from "@/components/PlannedTripsList";
 import theme, { ProfileButton, HomeButton, Footer } from "../../material/theme";
 
 export default function Rider() {
@@ -12,6 +14,14 @@ export default function Rider() {
   const handleClick = (comm) => {
     router.push(`/${comm}`);
   };
+
+  const [plannedTrips, setPlannedTrips] = useState([]);
+  useEffect(() => {
+    fetch("/api/plannedTrip")
+      .then((res) => res.json())
+      .then((data) => setPlannedTrips(data));
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -35,7 +45,7 @@ export default function Rider() {
         <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
           Rider Portal
         </Typography>
-        <p align="left">Planned Trips</p>
+        <PlannedTripsList plannedTrips={plannedTrips} />
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>
