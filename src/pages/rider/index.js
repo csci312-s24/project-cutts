@@ -33,14 +33,6 @@ export default function Rider() {
       >
         Profile
       </ProfileButton>
-      <HomeButton
-        variant="outlined"
-        size="medium"
-        endIcon={<HomeIcon />}
-        onClick={() => handleClick("")}
-      >
-        Home
-      </HomeButton>
       <Container sx={{ mt: 10 }}>
         <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
           Rider Portal
