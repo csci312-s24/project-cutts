@@ -5,9 +5,8 @@ import { useRouter } from "next/router";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import HomeIcon from "@mui/icons-material/Home";
 import PlannedTripsList from "@/components/PlannedTripsList";
-import theme, { ProfileButton, HomeButton, Footer } from "../../material/theme";
+import theme, { ProfileButton, Footer } from "../../material/theme";
 
 export default function Rider() {
   const router = useRouter();
