@@ -12,7 +12,6 @@ import { TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { en } from "date-fns/locale";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { TimeField } from "@mui/x-date-pickers/TimeField";
 import {
   Unstable_NumberInput as NumberInput,
   numberInputClasses,
@@ -32,11 +31,11 @@ export default function CreatePlannedTrip({ driver, complete }) {
   const [seatInput, setSeatInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
 
-  const driverID = 1; // this is really driver.id
   const handleSaveClick = () => {
     const plannedTrip = {
-      driverID,
+      driverID: driver,
       destinationInput,
+      date: departureDateInput,
       departureTimeInput,
       departureLocationInput,
       seatInput,
@@ -81,14 +80,20 @@ export default function CreatePlannedTrip({ driver, complete }) {
               error={!departureDateInput}
               onChange={(event) => setDepartureDateInput(event)}
             />
-            <TimeField
-              required
-              id="departureTimeInput"
-              label="What time will you leave"
-              value={departureTimeInput}
-              onChange={(event) => setDepartureTimeInput(event)}
-            />
           </LocalizationProvider>
+
+          <TextField
+            required
+            margin="normal"
+            id="departureTimeInput"
+            label="What time will you leave "
+            error={!departureTimeInput}
+            value={departureTimeInput}
+            helperText={
+              !departureTimeInput ? "departure time can't be blank" : " "
+            }
+            onChange={(event) => setDepartureTimeInput(event.target.value)}
+          />
 
           <TextField
             required
@@ -139,3 +144,5 @@ export default function CreatePlannedTrip({ driver, complete }) {
     </ThemeProvider>
   );
 }
+
+// prop type is number for driver

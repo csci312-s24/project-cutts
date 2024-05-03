@@ -1,16 +1,11 @@
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import CreatePlannedTrip from "../../components/CreatePlannedTrip";
 
 export default function NewRide() {
   const router = useRouter();
-
-  const ExampleUser = {
-    name: "Mihir",
-    num: 212,
-    year: 2024,
-    email: "mbsingh@middlebury.edu",
-    id: 1,
-  };
+  const { data: session } = useSession();
+  const driver = session.user.id;
 
   const complete = async (PlannedTrip) => {
     // console.log(PlannedTrip)
@@ -37,7 +32,7 @@ export default function NewRide() {
 
   return (
     <div>
-      <CreatePlannedTrip appUser={ExampleUser} complete={complete} />
+      <CreatePlannedTrip driver={driver} complete={complete} />
     </div>
   );
 }
