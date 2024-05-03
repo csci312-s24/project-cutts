@@ -8,18 +8,32 @@ import Typography from "@mui/material/Typography";
 import UserShape from "./UserShape";
 
 export default function CarInfo({ user }) {
-  // const carYear = ""
-  // const carMake = ""
-  // const carModel = ""
+  let carYear = "";
+  let carMake = "";
+  let carModel = "";
+  let carPlate = "";
+
+  if (user !== undefined) {
+    carYear = user.carYear;
+  }
+  if (user !== undefined) {
+    carMake = user.carMake;
+  }
+  if (user !== undefined) {
+    carModel = user.carModel;
+  }
+  if (user !== undefined) {
+    carPlate = user.carPlate;
+  }
   return (
     <div>
       <Typography variant="h5" align="left">
         Car Info:
       </Typography>
-      <ul>Year: {user.carYear ? user.carYear : ""}</ul>
-      <ul>Make: {user.carMake ? user.carMake : ""}</ul>
-      <ul>Model: {user.carModel}</ul>
-      <ul>Plate: {user.carPlate}</ul>
+      <ul>Year: {carYear}</ul>
+      <ul>Make: {carMake}</ul>
+      <ul>Model: {carModel}</ul>
+      <ul>Plate: {carPlate}</ul>
     </div>
   );
 }
