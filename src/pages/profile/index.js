@@ -7,18 +7,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import PropTypes from "prop-types";
 import theme, { HomeButton, Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 
-export default function Profile({
-  ExampleCar = {
-    year: 2000,
-    make: "Toyota",
-    model: "Corolla",
-    plate: "123-ABC",
-  },
-}) {
+export default function Profile() {
   // routing
   const router = useRouter();
   const handleClick = (comm) => {
@@ -64,7 +56,7 @@ export default function Profile({
         <ul>Email: {localUser.email} </ul>
         <ul>Phone Number: {localUser.num} </ul>
         <ul>Grad Year: {localUser.year} </ul>
-        {hasCar && <CarInfo car={ExampleCar} />}
+        {hasCar && <CarInfo car={localUser} />}
         <Button
           variant="contained"
           onClick={() => toProfileEditor()}
@@ -78,15 +70,3 @@ export default function Profile({
     </ThemeProvider>
   );
 }
-
-// need help importing this from CarInfo.js instead of re-writing it
-const CarInfooShape = PropTypes.shape({
-  year: PropTypes.number.isRequired,
-  make: PropTypes.string.isRequired,
-  model: PropTypes.string.isRequired,
-  plate: PropTypes.string.isRequired,
-});
-
-Profile.propTypes = {
-  ExampleCar: CarInfooShape,
-};

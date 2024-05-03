@@ -15,6 +15,10 @@ const UserShape = PropTypes.shape({
   year: PropTypes.string,
   email: PropTypes.string,
   googleId: PropTypes.string,
+  carYear: PropTypes.string,
+  carMake: PropTypes.string,
+  carModel: PropTypes.string,
+  carPlate: PropTypes.string,
 });
 
 export default UserShape;
