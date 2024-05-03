@@ -39,7 +39,7 @@ export default function Driver() {
           {" "}
           New Ride
         </Button>
-        <p align="left">Planned Trips</p>
+        <p align="left">Proposed Trips</p>
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>

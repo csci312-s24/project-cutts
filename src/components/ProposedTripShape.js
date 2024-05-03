@@ -4,7 +4,7 @@ import UserShape from "./UserShape";
 const ProposedTripShape = PropTypes.shape({
   id: PropTypes.num.isRequired,
   proposer: UserShape.isRequired,
-  departureTime: PropTypes.instanceOf(Date).isRequired,
+  departureTime: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
 });
 
