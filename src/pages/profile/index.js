@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
+import Grid from "@mui/material/Grid";
 
 import { ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
@@ -47,37 +48,20 @@ export default function Profile({
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
-      {session && (
-        <div>
-          Signed in as {session.user.email}{" "}
-          <button type="button" onClick={signOut}>
-            Sign out
-          </button>
-        </div>
-      )}
-
-      <Container sx={{ mt: 10 }}>
-        <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
-          Profile
+      <Container sx={{ mt: 5 }}>
+        <Typography variant="h3" align="center" sx={{ color: "#0C4C7F" }}>
+          Midd Rideshare
         </Typography>
-        <Typography variant="h5" align="left">
-          Personal Info:
-        </Typography>
-        <ul>Name: {localUser.name} </ul>
-        <ul>Email: {localUser.email} </ul>
-        <ul>Phone Number: {localUser.num} </ul>
-        <ul>Grad Year: {localUser.year} </ul>
-        {hasCar && <CarInfo car={ExampleCar} />}
-        <Button
-          variant="contained"
-          onClick={() => toProfileEditor()}
-          sx={{ left: "7px" }}
-        >
-          {" "}
-          Edit Profile
-        </Button>
+        {session && (
+          <Container align="center">
+            Signed in as {session.user.email}{" "}
+            <button type="button" onClick={signOut}>
+              Sign out
+            </button>
+          </Container>
+        )}
       </Container>
+
       <Box
         alignItems="center"
         justifyContent="center"
@@ -100,6 +84,37 @@ export default function Profile({
           </Button>
         </ButtonGroup>
       </Box>
+
+      <Container sx={{ m: 5 }}>
+        {/* <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
+          Profile 
+        </Typography> */}
+        <Grid container spacing={5} sx={{ mb: 3 }}>
+          <Grid item xs={6}>
+            <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
+              Personal Info:
+            </Typography>
+            <ul>Name: {localUser.name} </ul>
+            <ul>Email: {localUser.email} </ul>
+            <ul>Phone Number: {localUser.num} </ul>
+            <ul>Grad Year: {localUser.year} </ul>
+          </Grid>
+          <Grid item xs={6}>
+            {hasCar && <CarInfo car={ExampleCar} />}
+          </Grid>
+        </Grid>
+
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => toProfileEditor()}
+          sx={{ left: "7px" }}
+        >
+          {" "}
+          Edit Profile
+        </Button>
+      </Container>
+
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>
   );

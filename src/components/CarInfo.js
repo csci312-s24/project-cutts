@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 export default function CarInfo({ car }) {
   return (
     <div>
-      <Typography variant="h5" align="left">
+      <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
         Car Info:
       </Typography>
       <ul>Year: {car.year}</ul>
