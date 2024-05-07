@@ -6,12 +6,10 @@ import { useRouter } from "next/router";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import theme, { HomeButton, Footer } from "../../material/theme";
-import PropTypes from "prop-types";
-import Grid from "@mui/material/Grid";
 import { ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import theme, { Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 
 export default function Profile() {
@@ -85,7 +83,7 @@ export default function Profile() {
         <ul>Email: {localUser.email} </ul>
         <ul>Phone Number: {localUser.num} </ul>
         <ul>Grad Year: {localUser.year} </ul>
-        {localUser.hasCar && <CarInfo car={localUser} />}
+        {localUser.hasCar && <CarInfo user={localUser} />}
         <Button
           variant="contained"
           size="small"

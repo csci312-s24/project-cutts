@@ -84,7 +84,6 @@ export default function AppUserProfileEdit({ appUser, complete }) {
         size="small"
         onClick={() => setHasCarInput(!hasCarInput)}
       >
-        {/* does this update hasCar to true or false? */}
         {hasCarInput ? "Delete Car" : "Add Car"}
       </Button>
       {hasCarInput && (
