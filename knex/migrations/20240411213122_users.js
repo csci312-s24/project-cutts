@@ -6,6 +6,11 @@ exports.up = function (knex) {
     table.string("name");
     table.string("num");
     table.string("year");
+    table.string("hasCar");
+    table.string("carYear");
+    table.string("carMake");
+    table.string("carModel");
+    table.string("carPlate");
   });
 };
 

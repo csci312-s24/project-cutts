@@ -21,6 +21,11 @@ export default class User extends BaseModel {
         email: { type: "string" },
         num: { type: "string" },
         year: { type: "string" },
+        hasCar: { type: "boolean" },
+        carYear: { type: "string", default: "" },
+        carMake: { type: "string", default: "" },
+        carModel: { type: "string", default: "" },
+        carPlate: { type: "string", default: "" },
       },
     };
   }

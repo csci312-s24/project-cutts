@@ -6,23 +6,15 @@ import { useRouter } from "next/router";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import theme, { HomeButton, Footer } from "../../material/theme";
 import PropTypes from "prop-types";
 import Grid from "@mui/material/Grid";
-
 import { ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import theme, { Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 
-export default function Profile({
-  ExampleCar = {
-    year: 2000,
-    make: "Toyota",
-    model: "Corolla",
-    plate: "123-ABC",
-  },
-}) {
+export default function Profile() {
   // routing
   const router = useRouter();
   const handleClick = (comm) => {
@@ -41,9 +33,6 @@ export default function Profile({
       .then((res) => res.json())
       .then((data) => setLocalUser(data));
   }, [session]);
-
-  // hardcoded for now - normally get these from the AppUser prop
-  const hasCar = true;
 
   return (
     <ThemeProvider theme={theme}>
@@ -85,25 +74,18 @@ export default function Profile({
         </ButtonGroup>
       </Box>
 
-      <Container sx={{ m: 5 }}>
-        {/* <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
-          Profile 
-        </Typography> */}
-        <Grid container spacing={5} sx={{ mb: 3 }}>
-          <Grid item xs={6}>
-            <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
-              Personal Info:
-            </Typography>
-            <ul>Name: {localUser.name} </ul>
-            <ul>Email: {localUser.email} </ul>
-            <ul>Phone Number: {localUser.num} </ul>
-            <ul>Grad Year: {localUser.year} </ul>
-          </Grid>
-          <Grid item xs={6}>
-            {hasCar && <CarInfo car={ExampleCar} />}
-          </Grid>
-        </Grid>
-
+      <Container sx={{ mt: 10 }}>
+        <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
+          Profile
+        </Typography>
+        <Typography variant="h5" align="left">
+          Personal Info:
+        </Typography>
+        <ul>Name: {localUser.name} </ul>
+        <ul>Email: {localUser.email} </ul>
+        <ul>Phone Number: {localUser.num} </ul>
+        <ul>Grad Year: {localUser.year} </ul>
+        {localUser.hasCar && <CarInfo car={localUser} />}
         <Button
           variant="contained"
           size="small"
@@ -119,15 +101,3 @@ export default function Profile({
     </ThemeProvider>
   );
 }
-
-// need help importing this from CarInfo.js instead of re-writing it
-const CarInfooShape = PropTypes.shape({
-  year: PropTypes.number.isRequired,
-  make: PropTypes.string.isRequired,
-  model: PropTypes.string.isRequired,
-  plate: PropTypes.string.isRequired,
-});
-
-Profile.propTypes = {
-  ExampleCar: CarInfooShape,
-};

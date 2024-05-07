@@ -2,32 +2,42 @@
   Displays the information of a car
 
   props:
-    car - the AppUser's car
+    user - user object
 */
-import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
+import UserShape from "./UserShape";
 
-export default function CarInfo({ car }) {
+export default function CarInfo({ user }) {
+  let carYear = "";
+  let carMake = "";
+  let carModel = "";
+  let carPlate = "";
+
+  if (user !== undefined) {
+    carYear = user.carYear;
+  }
+  if (user !== undefined) {
+    carMake = user.carMake;
+  }
+  if (user !== undefined) {
+    carModel = user.carModel;
+  }
+  if (user !== undefined) {
+    carPlate = user.carPlate;
+  }
   return (
     <div>
       <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
         Car Info:
       </Typography>
-      <ul>Year: {car.year}</ul>
-      <ul>Make: {car.make}</ul>
-      <ul>Model: {car.model}</ul>
-      <ul>Plate: {car.plate}</ul>
+      <ul>Year: {carYear}</ul>
+      <ul>Make: {carMake}</ul>
+      <ul>Model: {carModel}</ul>
+      <ul>Plate: {carPlate}</ul>
     </div>
   );
 }
 
-const CarInfoShape = PropTypes.shape({
-  year: PropTypes.number.isRequired,
-  make: PropTypes.string.isRequired,
-  model: PropTypes.string.isRequired,
-  plate: PropTypes.string.isRequired,
-});
-
 CarInfo.propTypes = {
-  car: CarInfoShape,
+  user: UserShape.isRequired,
 };
