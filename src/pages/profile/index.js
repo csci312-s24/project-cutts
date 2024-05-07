@@ -30,9 +30,6 @@ export default function Profile() {
       .then((data) => setLocalUser(data));
   }, [session]);
 
-  // hardcoded for now - normally get these from the AppUser prop
-  const hasCar = true;
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -56,7 +53,7 @@ export default function Profile() {
         <ul>Email: {localUser.email} </ul>
         <ul>Phone Number: {localUser.num} </ul>
         <ul>Grad Year: {localUser.year} </ul>
-        {hasCar && <CarInfo car={localUser} />}
+        {localUser.hasCar && <CarInfo car={localUser} />}
         <Button
           variant="contained"
           onClick={() => toProfileEditor()}
