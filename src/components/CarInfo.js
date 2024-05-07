@@ -27,7 +27,7 @@ export default function CarInfo({ user }) {
   }
   return (
     <div>
-      <Typography variant="h5" align="left">
+      <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
         Car Info:
       </Typography>
       <ul>Year: {carYear}</ul>

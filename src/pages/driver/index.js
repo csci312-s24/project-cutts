@@ -5,8 +5,7 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import HomeIcon from "@mui/icons-material/Home";
-import theme, { ProfileButton, HomeButton, Footer } from "../../material/theme";
+import theme, { ProfileButton, Footer } from "../../material/theme";
 
 export default function Driver() {
   const router = useRouter();
@@ -27,14 +26,7 @@ export default function Driver() {
       >
         Profile
       </ProfileButton>
-      <HomeButton
-        variant="outlined"
-        size="medium"
-        endIcon={<HomeIcon />}
-        onClick={() => handleClick("")}
-      >
-        Home
-      </HomeButton>
+
       <Container sx={{ mt: 10 }}>
         <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
           Driver Portal
@@ -47,7 +39,7 @@ export default function Driver() {
           {" "}
           New Ride
         </Button>
-        <p align="left">Planned Trips</p>
+        <p align="left">Proposed Trips</p>
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>
