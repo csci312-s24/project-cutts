@@ -13,6 +13,11 @@ exports.seed = async function (knex) {
       name: "Panther",
       num: "1234567890",
       year: 2024,
+      hasCar: true,
+      carYear: 2020,
+      carMake: "Toyota",
+      carModel: "Corolla",
+      carPlate: "VT-12345",
     },
   ]);
 
