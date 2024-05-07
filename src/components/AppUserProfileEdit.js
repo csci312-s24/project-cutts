@@ -78,42 +78,7 @@ export default function AppUserProfileEdit({ appUser, complete }) {
         onChange={(event) => setYearInput(event.target.value)}
         sx={{ paddingBottom: 1 }}
       />
-      <TextField
-        id="CarYear"
-        placeholder="enter the year of your car"
-        label="Car Year"
-        variant="outlined"
-        value={carYearInput}
-        onChange={(event) => setCarYearInput(event.target.value)}
-        sx={{ paddingBottom: 1 }}
-      />
-      <TextField
-        id="CarMake"
-        placeholder="enter the make of your car"
-        label="Car Make"
-        variant="outlined"
-        value={carMakeInput}
-        onChange={(event) => setCarMakeInput(event.target.value)}
-        sx={{ paddingBottom: 1 }}
-      />
-      <TextField
-        id="CarModel"
-        placeholder="enter the model of your car"
-        label="Car Model"
-        variant="outlined"
-        value={carModelInput}
-        onChange={(event) => setCarModelInput(event.target.value)}
-        sx={{ paddingBottom: 1 }}
-      />
-      <TextField
-        id="CarPlate"
-        placeholder="enter the plate of your car"
-        label="Car Plate"
-        variant="outlined"
-        value={carPlateInput}
-        onChange={(event) => setCarPlateInput(event.target.value)}
-        sx={{ paddingBottom: 1 }}
-      />
+
       <Button
         variant="contained"
         size="small"
@@ -122,6 +87,50 @@ export default function AppUserProfileEdit({ appUser, complete }) {
         {/* does this update hasCar to true or false? */}
         {hasCarInput ? "Delete Car" : "Add Car"}
       </Button>
+      {hasCarInput && (
+        <TextField
+          id="CarYear"
+          placeholder="enter the year of your car"
+          label="Car Year"
+          variant="outlined"
+          value={carYearInput}
+          onChange={(event) => setCarYearInput(event.target.value)}
+          sx={{ paddingBottom: 1 }}
+        />
+      )}
+      {hasCarInput && (
+        <TextField
+          id="CarMake"
+          placeholder="enter the make of your car"
+          label="Car Make"
+          variant="outlined"
+          value={carMakeInput}
+          onChange={(event) => setCarMakeInput(event.target.value)}
+          sx={{ paddingBottom: 1 }}
+        />
+      )}
+      {hasCarInput && (
+        <TextField
+          id="CarModel"
+          placeholder="enter the model of your car"
+          label="Car Model"
+          variant="outlined"
+          value={carModelInput}
+          onChange={(event) => setCarModelInput(event.target.value)}
+          sx={{ paddingBottom: 1 }}
+        />
+      )}
+      {hasCarInput && (
+        <TextField
+          id="CarPlate"
+          placeholder="enter the plate of your car"
+          label="Car Plate"
+          variant="outlined"
+          value={carPlateInput}
+          onChange={(event) => setCarPlateInput(event.target.value)}
+          sx={{ paddingBottom: 1 }}
+        />
+      )}
       <div>
         <Button variant="contained" size="small" onClick={handleSaveClick}>
           Save
