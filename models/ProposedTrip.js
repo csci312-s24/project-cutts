@@ -1,5 +1,6 @@
 import { Model } from "objection";
 import BaseModel from "./BaseModel";
+import User from "./User";
 
 export default class ProposedTrip extends BaseModel {
   // Table name is the only required property.
@@ -28,9 +29,9 @@ export default class ProposedTrip extends BaseModel {
   static relationMappings = {
     related: {
       relation: Model.BelongsToOneRelation,
-      modelClass: ProposedTrip, // eslint-disable-line no-use-before-define
+      modelClass: User, // eslint-disable-line no-use-before-define
       join: {
-        from: "ProposedTrip.proposer", // will this work ?
+        from: "ProposedTrip.proposer",
         to: "User.id",
       },
     },

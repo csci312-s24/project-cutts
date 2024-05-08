@@ -1,6 +1,9 @@
 /* eslint-disable camelcase */
 import { Model } from "objection";
 import BaseModel from "./BaseModel";
+import User from "./User";
+// eslint-disable-next-line import/no-cycle
+import PlannedTrip from "./PlannedTrip";
 
 export default class SeatRequest extends BaseModel {
   // Table name is the only required property.
@@ -25,10 +28,10 @@ export default class SeatRequest extends BaseModel {
     };
   }
 
-  static relationMappings = {
+  static relationMappings = () => ({
     relatedUser: {
       relation: Model.BelongsToOneRelation,
-      modelClass: SeatRequest, // eslint-disable-line no-use-before-define
+      modelClass: User, // eslint-disable-line no-use-before-define
       join: {
         from: "SeatRequest.requester",
         to: "User.id",
@@ -36,11 +39,11 @@ export default class SeatRequest extends BaseModel {
     },
     relatedTrip: {
       relation: Model.BelongsToOneRelation,
-      modelClass: SeatRequest, // eslint-disable-line no-use-before-define
+      modelClass: PlannedTrip, // eslint-disable-line no-use-before-define
       join: {
         from: "SeatRequest.plannedTripId",
         to: "PlannedTrip.id",
       },
     },
-  };
+  });
 }
