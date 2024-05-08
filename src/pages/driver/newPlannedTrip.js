@@ -1,14 +1,23 @@
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import CreatePlannedTrip from "../../components/CreatePlannedTrip";
 
 export default function NewRide() {
   const router = useRouter();
-  const { data: session } = useSession();
-  let driver = -1;
 
+  const { data: session } = useSession();
+  const [localUser, setLocalUser] = useState("");
+  useEffect(() => {
+    if (!session) return;
+    fetch(`/api/User/${session.user.id}`)
+      .then((res) => res.json())
+      .then((data) => setLocalUser(data));
+  }, [session]);
+
+  let driver = 0;
   if (session) {
-    driver = 0;
+    driver = localUser;
   }
 
   const complete = async (PlannedTrip) => {
