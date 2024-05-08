@@ -22,8 +22,6 @@ import theme from "../material/theme";
 
 // just for creating planned trips - need to make separate React component for editing them
 export default function CreatePlannedTrip({ driver, complete }) {
-  // states for inputs (driver - name, destination, departure time, departure location, number of available seats)
-
   const [destinationInput, setDestinationInput] = useState("");
   const [departureTimeInput, setDepartureTimeInput] = useState("");
   const [departureDateInput, setDepartureDateInput] = useState("");
@@ -33,7 +31,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
 
   const handleSaveClick = () => {
     const plannedTrip = {
-      driverID: driver,
+      driverID: driver.id,
       destinationInput,
       date: departureDateInput,
       departureTimeInput,

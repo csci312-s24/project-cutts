@@ -4,6 +4,10 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import PlusIcon from "@mui/icons-material/Add";
+import Tooltip from "@mui/material/Tooltip";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 import UserShape from "./UserShape";
 
 export default function AppUserProfileEdit({ appUser, complete }) {
@@ -78,14 +82,16 @@ export default function AppUserProfileEdit({ appUser, complete }) {
         onChange={(event) => setYearInput(event.target.value)}
         sx={{ paddingBottom: 1 }}
       />
-
-      <Button
-        variant="contained"
-        size="small"
-        onClick={() => setHasCarInput(!hasCarInput)}
-      >
-        {hasCarInput ? "Delete Car" : "Add Car"}
-      </Button>
+      <Tooltip title={hasCarInput ? "Delete Car" : "Add Car"}>
+        `{" "}
+        <IconButton
+          variant="contained"
+          size="small"
+          onClick={() => setHasCarInput(!hasCarInput)}
+        >
+          {hasCarInput ? <DeleteIcon /> : <PlusIcon />}
+        </IconButton>
+      </Tooltip>
       {hasCarInput && (
         <TextField
           id="CarYear"

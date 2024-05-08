@@ -4,14 +4,24 @@ import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
+import ToolTip from "@mui/material/Tooltip";
 
+// `Email:  ${trip.relatedUser.email}
+// Phone Number: ${trip.relatedUser.num}`
 export default function PlannedTripsList({ plannedTrips }) {
   const plannedTripList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
         <Box sx={{ border: 1, borderRadius: "8px" }}>
           <Typography variant="h5">
-            <b>{trip.departureLocationInput}</b> to{" "}
+            <ToolTip
+              title={`Email: ${trip.relatedUser.email}
+            Number: ${trip.relatedUser.num}`}
+            >
+              {/* fix this if you can -- need a new line above btwn those two */}
+              <b>{trip.relatedUser.name}</b>
+            </ToolTip>{" "}
+            is driving from <b>{trip.departureLocationInput}</b> to{" "}
             <b>{trip.destinationInput}</b>
           </Typography>
           <Typography>

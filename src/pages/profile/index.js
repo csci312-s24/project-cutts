@@ -63,12 +63,14 @@ export default function Profile() {
           >
             Planned Trips
           </Button>
-          <Button
-            onClick={() => handleClick("driver")}
-            endIcon={<AirportShuttleIcon />}
-          >
-            Driver Portal
-          </Button>
+          {localUser.hasCar && (
+            <Button
+              onClick={() => handleClick("driver")}
+              endIcon={<AirportShuttleIcon />}
+            >
+              Driver Portal
+            </Button>
+          )}
         </ButtonGroup>
       </Box>
 
