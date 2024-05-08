@@ -24,7 +24,7 @@ export default function NewRide() {
       });
       if (response.ok) {
         // const createdPlannedTrip = await response.json();
-        router.push(`/driver`);
+        router.push(`/rider`);
       } else {
         console.log("Error: Failed to create the planned trip"); // eslint-disable-line no-console
       }
