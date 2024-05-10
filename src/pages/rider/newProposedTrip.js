@@ -18,7 +18,6 @@ export default function NewRide() {
   const complete = async (ProposedTrip) => {
     if (ProposedTrip) {
       // POST call to the database to update with the newly created Proposed Trip
-      console.log("here0");
       const response = await fetch(`/api/proposedTrip`, {
         method: "POST",
         body: JSON.stringify(ProposedTrip),
