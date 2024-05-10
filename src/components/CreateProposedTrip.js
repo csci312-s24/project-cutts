@@ -26,7 +26,6 @@ import { DateField } from "@mui/x-date-pickers/DateField";
 import Input from "@mui/material/Input";
 import theme from "../material/theme";
 
-// just for creating planned trips - need to make separate React component for editing them
 export default function CreateProposedTrip({ proposer, complete }) {
   const [dest, setDest] = useState("");
   const [date, setDate] = useState("");
@@ -35,7 +34,7 @@ export default function CreateProposedTrip({ proposer, complete }) {
 
   const handleSaveClick = () => {
     const proposedTrip = {
-      proposerID: proposer.id,
+      proposer: proposer.id,
       dest,
       date,
       timeFrame,
@@ -43,8 +42,6 @@ export default function CreateProposedTrip({ proposer, complete }) {
     };
     complete(proposedTrip);
   };
-
-  const canSave = dest && date && timeFrame;
 
   const handleCancelClick = () => complete();
 
@@ -56,12 +53,14 @@ export default function CreateProposedTrip({ proposer, complete }) {
           Propose a Trip!
         </Typography>
         <div className={styles.form}>
+          {/* how to make dest a required field */}
           <TextField
             required
-            id="dest"
             label="Where do you want to go?"
+            id="dest"
+            value={dest}
             error={!dest}
-            helperText={!dest ? "destination input can't be blank" : " "}
+            helperText={!dest ? "destination input can't be blank" : ""}
             onChange={(event) => setDest(event.target.value)}
           />
 
@@ -69,7 +68,7 @@ export default function CreateProposedTrip({ proposer, complete }) {
             <DateField
               required
               label="What date do you need a ride?"
-              id="dateI"
+              id="date"
               value={date}
               error={!date}
               onChange={(event) => setDate(event)}
@@ -85,13 +84,13 @@ export default function CreateProposedTrip({ proposer, complete }) {
               labelId="timeFrame"
               id="timeFrame"
               value={timeFrame}
-              helperText={!timeFrame ? "time frame can't be blank" : " "}
+              helpertext={!timeFrame ? "time frame can't be blank" : " "}
               label="What time of day would you like to leave?"
               onChange={(event) => setTimeFrame(event.target.value)}
             >
-              <MenuItem>Morning</MenuItem>
-              <MenuItem>Afternoon</MenuItem>
-              <MenuItem>Night</MenuItem>
+              <MenuItem value="morning"> Morning</MenuItem>
+              <MenuItem value="afternoon">Afternoon</MenuItem>
+              <MenuItem value="night">Night</MenuItem>
             </Select>
           </FormControl>
 

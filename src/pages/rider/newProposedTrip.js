@@ -15,14 +15,10 @@ export default function NewRide() {
       .then((data) => setLocalUser(data));
   }, [session]);
 
-  let rider = 0;
-  if (session) {
-    rider = localUser;
-  }
-
   const complete = async (ProposedTrip) => {
     if (ProposedTrip) {
-      // POST call to the database to update with the newly created Planned Trip
+      // POST call to the database to update with the newly created Proposed Trip
+      console.log("here0");
       const response = await fetch(`/api/proposedTrip`, {
         method: "POST",
         body: JSON.stringify(ProposedTrip),
@@ -44,7 +40,7 @@ export default function NewRide() {
 
   return (
     <div>
-      <CreateProposedTrip driver={rider} complete={complete} />
+      <CreateProposedTrip proposer={localUser} complete={complete} />
     </div>
   );
 }

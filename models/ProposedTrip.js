@@ -13,11 +13,11 @@ export default class ProposedTrip extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["dest, date, timeFrame, proposer"],
+      required: ["dest", "date", "timeFrame", "proposer"],
 
       properties: {
         id: { type: "integer" },
-        proposer: { type: "integer" }, // this should be the user ID of the proposer
+        proposer: { type: "integer" },
         dest: { type: "string" },
         date: { type: "string", format: "date-time" },
         timeFrame: { type: "string", enum: ["morning", "afternoon", "night"] },
