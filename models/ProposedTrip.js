@@ -26,8 +26,8 @@ export default class ProposedTrip extends BaseModel {
     };
   }
 
-  static relationMappings = {
-    related: {
+  static relationMappings = () => ({
+    relatedProposer: {
       relation: Model.BelongsToOneRelation,
       modelClass: User, // eslint-disable-line no-use-before-define
       join: {
@@ -35,5 +35,5 @@ export default class ProposedTrip extends BaseModel {
         to: "User.id",
       },
     },
-  };
+  });
 }
