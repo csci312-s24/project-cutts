@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
-import UserShape from "./UserShape";
 
 const PlannedTripShape = PropTypes.shape({
   id: PropTypes.num.isRequired,
-  driver: UserShape.isRequired,
+  driverID: PropTypes.integer.isRequired,
   departureTime: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
   departureLocation: PropTypes.string.isRequired,

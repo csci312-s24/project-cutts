@@ -7,11 +7,9 @@ const router = createRouter();
 
 router.get(async (req, res) => {
   const currentDate = Date.now();
-  const proposedTrips = await ProposedTrip.query().where(
-    "date",
-    ">",
-    currentDate,
-  );
+  const proposedTrips = await ProposedTrip.query()
+    .where("date", ">", currentDate)
+    .withGraphFetched("relatedProposer");
   res.status(200).json(proposedTrips);
 });
 

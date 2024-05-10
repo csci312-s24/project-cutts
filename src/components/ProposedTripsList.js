@@ -6,40 +6,37 @@ import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
 
-export default function PlannedTripsList({ plannedTrips }) {
-  const plannedTripList = plannedTrips.map((trip) => (
+export default function ProposedTripsList({ proposedTrips }) {
+  console.log(proposedTrips);
+  const proposedTripList = proposedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
         <Box sx={{ border: 1, borderRadius: "8px" }}>
           <Typography variant="h5">
             <ToolTip
-              title={`Email: ${trip.relatedUser.email}
-            Number: ${trip.relatedUser.num}`}
+              title={`Email: ${trip.relatedProposer.email}
+            Number: ${trip.relatedProposer.num}`}
             >
               {/* fix this if you can -- need a new line above btwn those two */}
-              <b>{trip.relatedUser.name}</b>
+              <b>{trip.relatedProposer.name}</b>
             </ToolTip>{" "}
-            is driving from <b>{trip.departureLocationInput}</b> to{" "}
-            <b>{trip.destinationInput}</b>
+            needs a ride to <b>{trip.dest}</b>
           </Typography>
           <Typography>
             Date: <b>{trip.date.slice(0, 10)}</b>
           </Typography>
           <Typography>
-            Departure Time: <b>{trip.departureTimeInput}</b>
-          </Typography>
-          <Typography>
-            Seats Available: <b>{trip.seatInput}</b>
+            Departure Time: <b>{trip.timeFrame}</b>
           </Typography>
           <br />
-          <Typography>{trip.messageInput}</Typography>
+          <Typography>{trip.message}</Typography>
         </Box>
       </Container>
     </ListItem>
   ));
   return (
     <div>
-      <List>{plannedTripList}</List>
+      <List>{proposedTripList}</List>
     </div>
   );
 }

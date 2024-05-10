@@ -11,7 +11,6 @@ export default class PlannedTrip extends BaseModel {
   }
 
   // Objection.js assumes primary key is `id` by default
-
   static get jsonSchema() {
     return {
       type: "object",
@@ -45,7 +44,7 @@ export default class PlannedTrip extends BaseModel {
       relation: Model.BelongsToOneRelation,
       modelClass: User, // eslint-disable-line no-use-before-define
       join: {
-        from: "PlannedTrip.driverID", // will this work ?
+        from: "PlannedTrip.driverID",
         to: "User.id",
       },
     },
