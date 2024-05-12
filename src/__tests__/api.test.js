@@ -98,4 +98,50 @@ describe("Cutts API", () => {
       },
     });
   });
+
+  test("GET /api/seatRequest/id should return the seat request with the corresponding id", async () => {
+    const seatRequest = {
+      id: 1,
+      requester: 1,
+      status: "pending",
+      time: expect.any(String),
+      plannedTripId: 1,
+    };
+
+    await testApiHandler({
+      rejectOnHandlerError: true,
+      pagesHandler: proposedTripEndpoint,
+      params: { id: 1 },
+      test: async ({ fetch }) => {
+        const res = await fetch();
+        expect(res.json()).resolves.toMatchObject(seatRequest);
+      },
+    });
+  });
+
+  test("POST /api/seatRequest should create a new seat request", async () => {
+    const newSeatRequest = {
+      id: 3,
+      requester: 1,
+      status: "approved",
+      time: expect.any(String),
+      plannedTripId: 2,
+    };
+
+    await testApiHandler({
+      rejectOnHandlerError: true,
+      pagesHandler: proposedTripEndpoint,
+      test: async ({ fetch }) => {
+        const res = await fetch({
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(newSeatRequest),
+        });
+        expect(res.status).toBe(200);
+        expect(res.json()).resolves.toMatchObject(newSeatRequest);
+      },
+    });
+  });
 });
