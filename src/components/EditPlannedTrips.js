@@ -14,23 +14,11 @@ import { DateField } from "@mui/x-date-pickers/DateField";
 import theme from "../material/theme";
 
 export default function EditPlannedTrip({ plannedTrip, complete }) {
-  const [destination, setDestination] = useState(
-    plannedTrip.destinationInput ? plannedTrip.destinationInput : "",
-  );
-  const [time, setTime] = useState(
-    plannedTrip.departureTimeInput ? plannedTrip.departureTimeInput : "",
-  );
-  const [editedDate, setEditedDate] = useState(
-    plannedTrip.date ? plannedTrip.date : "",
-  );
-  const [loca, setLoca] = useState(
-    plannedTrip.departureLocationInput
-      ? plannedTrip.departureLocationInput
-      : "",
-  );
-  const [seat, setSeat] = useState(
-    plannedTrip.seatInput ? plannedTrip.seatInput : "",
-  );
+  const [destination, setDestination] = useState(plannedTrip.destinationInput);
+  const [time, setTime] = useState(plannedTrip.departureTimeInput);
+  const [editedDate, setEditedDate] = useState(plannedTrip.date);
+  const [loca, setLoca] = useState(plannedTrip.departureLocationInput);
+  const [seat, setSeat] = useState(plannedTrip.seatInput);
   const [message, setMessage] = useState(
     plannedTrip.messageInput ? plannedTrip.messageInput : "",
   );
@@ -39,8 +27,8 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
     const editedPlannedTrip = {
       ...plannedTrip,
       destinationInput: destination,
-      date: editedDate,
       departureTimeInput: time,
+      date: editedDate,
       departureLocationInput: loca,
       seatInput: seat,
       messageInput: message,
@@ -60,8 +48,9 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
         <div className={styles.form}>
           <TextField
             required
-            id="destinationInput"
+            id="destination"
             label="Where are you headed"
+            value={destination}
             error={!destination}
             helperText={!destination ? "destinationInput can't be blank" : " "}
             onChange={(event) => setDestination(event.target.value)}
@@ -71,9 +60,10 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             <DateField
               required
               label="What date is your ride"
-              id="date"
+              id="editedDate"
               value={editedDate}
               error={!editedDate}
+              helperText={!editedDate ? "Date can't be blank" : " "}
               onChange={(event) => setEditedDate(event)}
             />
           </LocalizationProvider>
@@ -82,9 +72,9 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             required
             margin="normal"
             id="time"
-            label="What time will you leave "
-            error={!time}
+            label="What time will you leave"
             value={time}
+            error={!time}
             helperText={!time ? "departure time can't be blank" : " "}
             onChange={(event) => setTime(event.target.value)}
           />
@@ -92,8 +82,9 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
           <TextField
             required
             margin="normal"
-            id="departureLocationInput"
+            id="loca"
             label="Where will you leave "
+            value={loca}
             error={!loca}
             helperText={!loca ? "destinationInput can't be blank" : " "}
             onChange={(event) => setLoca(event.target.value)}
@@ -105,8 +96,9 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             type="number"
             min={0}
             max={12}
-            id="seatInput"
+            id="seat"
             label="Available seats in your car "
+            value={seat}
             error={!seat || seat > 12 || seat < 0}
             helperText={
               !seat ? "You must enter a number between 0 and 12 " : " "
@@ -117,6 +109,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
           <TextField
             id="message"
             label="(Optional) Add a message about your ride"
+            value={message}
             onChange={(event) => setMessage(event.target.value)}
           />
           <div>

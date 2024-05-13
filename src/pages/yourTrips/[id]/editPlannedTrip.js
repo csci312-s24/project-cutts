@@ -24,9 +24,9 @@ export default function EditYourPlannedTrip() {
         },
         body: JSON.stringify(editedTrip),
       });
-      router.back();
+      router.push(`/yourTrips`);
     } else {
-      router.back();
+      router.push(`/yourTrips`);
     }
   };
 
