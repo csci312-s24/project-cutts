@@ -17,7 +17,7 @@ export default function yourUpcomingTrips() {
     router.push(`/${comm}`);
   };
 
-  const [yourTrips, setYourTrips] = useState([]);
+  const [yourTrips, setYourTrips] = useState([[], []]);
   useEffect(() => {
     fetch("/api/yourTrips")
       .then((res) => res.json())
@@ -67,12 +67,7 @@ export default function yourUpcomingTrips() {
           Your Upcoming Trips
         </Typography>
       </Container>
-      {yourTrips.length === 2 ? (
-        <YourTripsList
-          plannedTrips={yourTrips[0]}
-          proposedTrips={yourTrips[1]}
-        />
-      ) : null}
+      <YourTripsList plannedTrips={yourTrips[0]} proposedTrips={yourTrips[1]} />
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>
   );
