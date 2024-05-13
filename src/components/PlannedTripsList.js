@@ -5,12 +5,44 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
 
-export default function PlannedTripsList({ plannedTrips }) {
+export default function PlannedTripsList({ plannedTrips, userId }) {
+  const handleCancelClick = async (tripId) => {
+    console.log("hello");
+    const newSeatRequest = {
+      requester: userId, // not sure how to get the user id
+      status: "requested",
+      time: new Date().toISOString(),
+      plannedTripId: tripId,
+    };
+
+    const response = await fetch(`/api/plannedTrip`, {
+      method: "POST",
+      body: JSON.stringify(newSeatRequest),
+      headers: new Headers({
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      }),
+    });
+    if (response.ok) {
+      console.log(response.JSON);
+    } else {
+      console.log("Error: Failed to create the seat request"); // eslint-disable-line no-console
+    }
+  };
+
   const plannedTripList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
         <Box sx={{ border: 1, borderRadius: "8px" }}>
+          <Button
+            variant="contained"
+            onClick={handleCancelClick(trip.id)}
+            sx={{ top: 0, right: 0 }}
+          >
+            Request <br /> Seat
+          </Button>
           <Typography variant="h5">
             <ToolTip
               title={`Email: ${trip.relatedUser.email}

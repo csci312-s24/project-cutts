@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import PlannedTripsList from "@/components/PlannedTripsList";
 import Button from "@mui/material/Button";
+import { useSession } from "next-auth/react";
 import theme, { ProfileButton, Footer } from "../../material/theme";
 
 export default function Rider() {
@@ -24,6 +25,8 @@ export default function Rider() {
       .then((res) => res.json())
       .then((data) => setPlannedTrips(data));
   }, []);
+
+  const { data: session } = useSession({ required: true });
 
   return (
     <ThemeProvider theme={theme}>
@@ -48,7 +51,7 @@ export default function Rider() {
           {" "}
           New Ride
         </Button>
-        <PlannedTripsList plannedTrips={plannedTrips} />
+        <PlannedTripsList plannedTrips={plannedTrips} user={session.user.id} />
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>
