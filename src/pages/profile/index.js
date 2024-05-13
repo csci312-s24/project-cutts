@@ -73,7 +73,7 @@ export default function Profile() {
             </Button>
           )}
           <Button
-            onClick={() => handleClick("yourTrips")}
+            onClick={() => handleClick("profile/yourTrips")}
             endIcon={<ChildCareIcon />}
           >
             Your Upcoming Trips
