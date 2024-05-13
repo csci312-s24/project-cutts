@@ -1,0 +1,62 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/rules-of-hooks */
+
+import { useState, useEffect } from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useRouter } from "next/router";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+// import YourTripsList from "@/components/YourTripsList";
+import theme, { ProfileButton, Footer } from "../../material/theme";
+
+export default function yourUpcomingTrips() {
+  const router = useRouter();
+  const handleClick = (comm) => {
+    router.push(`/${comm}`);
+  };
+
+  //         <YourTripsList plannedTrips={filter} seatRequests={filter} />
+
+  const [yourTrips, setYourTrips] = useState([]);
+  useEffect(() => {
+    fetch("/api/yourTrips")
+      .then((res) => res.json())
+      .then((data) => setYourTrips(data));
+  }, []);
+
+  // we aren't sure this works really
+  const filter = async () => {
+    fetch(`/api/yourTrips`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    });
+  };
+
+  // get seat requested rides
+  // from all seat requests, filter by requester id and return trips
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ProfileButton
+        variant="outlined"
+        size="medium"
+        endIcon={<AccountBoxIcon />}
+        onClick={() => handleClick("profile")}
+      >
+        Profile
+      </ProfileButton>
+      <Container sx={{ mt: 10 }}>
+        <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
+          Your Upcoming Trips
+        </Typography>
+      </Container>
+      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
+    </ThemeProvider>
+  );
+}
