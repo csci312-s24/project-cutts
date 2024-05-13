@@ -6,7 +6,7 @@ import CreatePlannedTrip from "../../components/CreatePlannedTrip";
 export default function NewRide() {
   const router = useRouter();
 
-  const { data: session } = useSession();
+  const { data: session } = useSession({ required: true });
   const [localUser, setLocalUser] = useState("");
   useEffect(() => {
     if (!session) return;

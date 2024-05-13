@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -11,6 +12,8 @@ import theme, { ProfileButton, Footer } from "../../material/theme";
 
 export default function Driver() {
   const router = useRouter();
+  const { data: session } = useSession({ required: true });
+
   const handleClick = (comm) => {
     router.push(`/${comm}`);
   };
@@ -20,6 +23,7 @@ export default function Driver() {
 
   const [proposedTrips, setProposedTrips] = useState([]);
   useEffect(() => {
+    if (!session) return;
     fetch("/api/proposedTrip")
       .then((res) => res.json())
       .then((data) => setProposedTrips(data));

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
@@ -18,8 +19,11 @@ export default function Rider() {
     router.push(`/rider/newProposedTrip`);
   };
 
+  const { data: session } = useSession({ required: true });
+
   const [plannedTrips, setPlannedTrips] = useState([]);
   useEffect(() => {
+    if (!session) return;
     fetch("/api/plannedTrip")
       .then((res) => res.json())
       .then((data) => setPlannedTrips(data));
