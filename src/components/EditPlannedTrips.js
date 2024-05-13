@@ -13,38 +13,37 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import theme from "../material/theme";
 
-// just for creating planned trips - need to make separate React component for editing them
 export default function EditPlannedTrip({ plannedTrip, complete }) {
-  const [destinationInput, setDestinationInput] = useState(
+  const [destination, setDestination] = useState(
     plannedTrip.destinationInput ? plannedTrip.destinationInput : "",
   );
-  const [departureTimeInput, setDepartureTimeInput] = useState(
+  const [time, setTime] = useState(
     plannedTrip.departureTimeInput ? plannedTrip.departureTimeInput : "",
   );
-  const [departureDateInput, setDepartureDateInput] = useState(
-    plannedTrip.fateInput ? plannedTrip.dateInput : "",
+  const [editedDate, setEditedDate] = useState(
+    plannedTrip.date ? plannedTrip.date : "",
   );
-  const [departureLocationInput, setDepartureLocationInput] = useState(
+  const [loca, setLoca] = useState(
     plannedTrip.departureLocationInput
       ? plannedTrip.departureLocationInput
       : "",
   );
-  const [seatInput, setSeatInput] = useState(
+  const [seat, setSeat] = useState(
     plannedTrip.seatInput ? plannedTrip.seatInput : "",
   );
-  const [messageInput, setMessageInput] = useState(
+  const [message, setMessage] = useState(
     plannedTrip.messageInput ? plannedTrip.messageInput : "",
   );
 
   const handleSaveClick = () => {
     const editedPlannedTrip = {
       ...plannedTrip,
-      destinationInput,
-      date: departureDateInput,
-      departureTimeInput,
-      departureLocationInput,
-      seatInput,
-      messageInput,
+      destinationInput: destination,
+      date: editedDate,
+      departureTimeInput: time,
+      departureLocationInput: loca,
+      seatInput: seat,
+      messageInput: message,
     };
     complete(editedPlannedTrip);
   };
@@ -63,35 +62,31 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             required
             id="destinationInput"
             label="Where are you headed"
-            error={!destinationInput}
-            helperText={
-              !destinationInput ? "destinationInput can't be blank" : " "
-            }
-            onChange={(event) => setDestinationInput(event.target.value)}
+            error={!destination}
+            helperText={!destination ? "destinationInput can't be blank" : " "}
+            onChange={(event) => setDestination(event.target.value)}
           />
 
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={en}>
             <DateField
               required
               label="What date is your ride"
-              id="departureDateInput"
-              value={departureDateInput}
-              error={!departureDateInput}
-              onChange={(event) => setDepartureDateInput(event)}
+              id="date"
+              value={editedDate}
+              error={!editedDate}
+              onChange={(event) => setEditedDate(event)}
             />
           </LocalizationProvider>
 
           <TextField
             required
             margin="normal"
-            id="departureTimeInput"
+            id="time"
             label="What time will you leave "
-            error={!departureTimeInput}
-            value={departureTimeInput}
-            helperText={
-              !departureTimeInput ? "departure time can't be blank" : " "
-            }
-            onChange={(event) => setDepartureTimeInput(event.target.value)}
+            error={!time}
+            value={time}
+            helperText={!time ? "departure time can't be blank" : " "}
+            onChange={(event) => setTime(event.target.value)}
           />
 
           <TextField
@@ -99,11 +94,9 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             margin="normal"
             id="departureLocationInput"
             label="Where will you leave "
-            error={!departureLocationInput}
-            helperText={
-              !departureLocationInput ? "destinationInput can't be blank" : " "
-            }
-            onChange={(event) => setDepartureLocationInput(event.target.value)}
+            error={!loca}
+            helperText={!loca ? "destinationInput can't be blank" : " "}
+            onChange={(event) => setLoca(event.target.value)}
           />
 
           <TextField
@@ -114,17 +107,17 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             max={12}
             id="seatInput"
             label="Available seats in your car "
-            error={!seatInput || seatInput > 12 || seatInput < 0}
+            error={!seat || seat > 12 || seat < 0}
             helperText={
-              !seatInput ? "You must enter a number between 0 and 12 " : " "
+              !seat ? "You must enter a number between 0 and 12 " : " "
             }
-            onChange={(event) => setSeatInput(event.target.value)}
+            onChange={(event) => setSeat(event.target.value)}
           />
 
           <TextField
             id="message"
             label="(Optional) Add a message about your ride"
-            onChange={(event) => setMessageInput(event.target.value)}
+            onChange={(event) => setMessage(event.target.value)}
           />
           <div>
             <Button variant="contained" size="small" onClick={handleSaveClick}>

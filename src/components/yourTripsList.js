@@ -13,11 +13,11 @@ export default function YourTripsList({ plannedTrips, proposedTrips }) {
   const router = useRouter();
 
   const handleEditPlannedClick = (trip) => {
-    router.push(`/editPlannedTrip/${trip.id}`);
+    router.push(`/yourTrips/${trip.id}/editPlannedTrip`);
   };
 
   const handleEditProposedClick = (trip) => {
-    router.push(`/editProposedTrip/${trip.id}`);
+    router.push(`/yourTrips/${trip.id}/editProposedTrip`);
   };
 
   const yourPlannedTripsList = plannedTrips.map((trip) => (
@@ -50,7 +50,7 @@ export default function YourTripsList({ plannedTrips, proposedTrips }) {
           <Button
             variant="contained"
             size="small"
-            onClick={handleEditPlannedClick(trip)}
+            onClick={() => handleEditPlannedClick(trip)}
           >
             Edit This Planned Trip
           </Button>
@@ -85,7 +85,7 @@ export default function YourTripsList({ plannedTrips, proposedTrips }) {
           <Button
             variant="contained"
             size="small"
-            onClick={handleEditProposedClick(trip)}
+            onClick={() => handleEditProposedClick(trip)}
           >
             Edit This Proposed Trip
           </Button>

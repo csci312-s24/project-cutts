@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import EditPlannedTrips from "@/components/EditPlannedTrips";
@@ -10,10 +10,10 @@ export default function EditYourPlannedTrip() {
   const [thisTrip, setThisTrip] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/plannedTrip/${thisTrip.id}`)
+    fetch(`/api/plannedTrip/${router.query.id}`)
       .then((res) => res.json())
       .then((data) => setThisTrip(data));
-  }, [thisTrip]);
+  }, [router.query.id]);
 
   const complete = async (editedTrip) => {
     if (editedTrip) {
@@ -33,7 +33,9 @@ export default function EditYourPlannedTrip() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <EditPlannedTrips plannedTrip={thisTrip} complete={complete} />
+      {thisTrip && (
+        <EditPlannedTrips plannedTrip={thisTrip} complete={complete} />
+      )}
     </ThemeProvider>
   );
 }
