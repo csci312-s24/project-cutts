@@ -6,10 +6,20 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
+import { useRouter } from "next/router";
 
 export default function YourTripsList({ plannedTrips, proposedTrips }) {
-  console.log("in planned trips list", plannedTrips);
-  console.log("in proposed trips list", proposedTrips);
+  const router = useRouter();
+
+  const handleEditPlannedClick = (trip) => {
+    router.push(`/editPlannedTrip/${trip.id}`);
+  };
+
+  const handleEditProposedClick = (trip) => {
+    router.push(`/editProposedTrip/${trip.id}`);
+  };
+
   const yourPlannedTripsList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
@@ -36,6 +46,14 @@ export default function YourTripsList({ plannedTrips, proposedTrips }) {
           </Typography>
           <br />
           <Typography>{trip.messageInput}</Typography>
+          {/* this button is being clicked automatically ?? */}
+          <Button
+            variant="contained"
+            size="small"
+            onClick={handleEditPlannedClick(trip)}
+          >
+            Edit This Planned Trip
+          </Button>
         </Box>
       </Container>
     </ListItem>
@@ -63,6 +81,14 @@ export default function YourTripsList({ plannedTrips, proposedTrips }) {
           </Typography>
           <br />
           <Typography>{trip.message}</Typography>
+          {/* this button is being clicked automatically ?? */}
+          <Button
+            variant="contained"
+            size="small"
+            onClick={handleEditProposedClick(trip)}
+          >
+            Edit This Proposed Trip
+          </Button>
         </Box>
       </Container>
     </ListItem>
