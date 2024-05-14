@@ -44,6 +44,7 @@ const theme = createTheme({
       main: red.A400,
     },
     background: {
+      // default: "#cfe5fc",
       default: "#cfe5fc",
     },
   },
