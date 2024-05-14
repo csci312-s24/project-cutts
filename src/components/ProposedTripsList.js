@@ -10,7 +10,16 @@ export default function ProposedTripsList({ proposedTrips }) {
   const proposedTripList = proposedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
-        <Box sx={{ border: 1, borderRadius: "8px" }}>
+        <Box
+          sx={{
+            border: 1,
+            padding: 1,
+            boxShadow: 1,
+            borderColor: "lightgrey",
+            borderRadius: "8px",
+            bgcolor: "#f0f4ff",
+          }}
+        >
           <Typography variant="h5">
             <ToolTip
               title={`Email: ${trip.relatedProposer.email}
