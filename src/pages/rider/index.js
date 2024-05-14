@@ -26,7 +26,14 @@ export default function Rider() {
       .then((data) => setPlannedTrips(data));
   }, []);
 
-  const { data: session } = useSession({ required: true });
+  const { data: session } = useSession();
+  const [localUser, setLocalUser] = useState("");
+  useEffect(() => {
+    if (!session) return;
+    fetch(`/api/User/${session.user.id}`)
+      .then((res) => res.json())
+      .then((data) => setLocalUser(data));
+  }, [session]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,7 +58,7 @@ export default function Rider() {
           {" "}
           New Ride
         </Button>
-        <PlannedTripsList plannedTrips={plannedTrips} user={session.user.id} />
+        <PlannedTripsList plannedTrips={plannedTrips} userID={localUser.id} />
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </ThemeProvider>

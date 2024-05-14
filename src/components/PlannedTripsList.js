@@ -7,23 +7,21 @@ import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 
-export default function PlannedTripsList({ plannedTrips, userId }) {
-  const handleCancelClick = async (tripId) => {
-    console.log("hello");
+export default function PlannedTripsList({ plannedTrips, userID }) {
+  const handleRequestClick = async (tripID) => {
     const newSeatRequest = {
-      requester: userId, // not sure how to get the user id
-      status: "requested",
+      requester: userID,
+      status: "pending",
       time: new Date().toISOString(),
-      plannedTripId: tripId,
+      plannedTripId: tripID,
     };
 
-    const response = await fetch(`/api/plannedTrip`, {
+    const response = await fetch(`/api/seatRequest`, {
       method: "POST",
       body: JSON.stringify(newSeatRequest),
-      headers: new Headers({
-        Accept: "application/json",
+      headers: {
         "Content-Type": "application/json",
-      }),
+      },
     });
     if (response.ok) {
       console.log(response.JSON);
@@ -38,7 +36,7 @@ export default function PlannedTripsList({ plannedTrips, userId }) {
         <Box sx={{ border: 1, borderRadius: "8px" }}>
           <Button
             variant="contained"
-            onClick={handleCancelClick(trip.id)}
+            onClick={() => handleRequestClick(trip.id)}
             sx={{ top: 0, right: 0 }}
           >
             Request <br /> Seat
