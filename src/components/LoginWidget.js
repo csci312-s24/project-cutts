@@ -6,9 +6,6 @@ export default function LoginWidget() {
   const router = useRouter();
 
   if (session) {
-    // return (<div>
-    //   <p>Signed in as {session.user.email} <button type="button" onClick={signOut}>Sign out</button></p>
-    // </div>);
     router.push("/profile");
   }
   return (

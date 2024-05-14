@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
 
 export default function ProposedTripsList({ proposedTrips }) {
-  console.log(proposedTrips);
   const proposedTripList = proposedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>

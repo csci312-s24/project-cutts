@@ -14,11 +14,7 @@ router.get(async (req, res) => {
 });
 
 router.post(authenticated, async (req, res) => {
-  console.log("here1");
-  console.log(req.body);
   const proposedTrip = await ProposedTrip.query().insertAndFetch(req.body);
-  console.log("here2");
-  console.log(proposedTrip);
   res.status(200).json(proposedTrip);
 });
 
