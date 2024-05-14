@@ -6,6 +6,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styles from "@/styles/Home.module.css";
 import Button from "@mui/material/Button";
+
 import {
   TextField,
   FormControl,
@@ -61,8 +62,9 @@ export default function EditProposedTrip({ proposedTrip, complete }) {
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={en}>
             <DateField
               required
-              label="What date is your ride"
               id="editedDate"
+              label="What day would you like to leave?"
+              //   need to get the date from the database
               value={editedDate}
               error={!editedDate}
               helperText={!editedDate ? "Date can't be blank" : " "}

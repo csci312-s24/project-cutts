@@ -61,6 +61,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
               required
               label="What date is your ride"
               id="editedDate"
+              //   need to get the date from the database
               value={editedDate}
               error={!editedDate}
               helperText={!editedDate ? "Date can't be blank" : " "}
