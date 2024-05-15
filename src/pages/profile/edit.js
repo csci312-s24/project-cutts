@@ -1,10 +1,7 @@
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect, useState } from "react";
 import AppUserProfileEdit from "../../components/AppUserProfileEdit";
-import theme from "../../material/theme";
 
 export default function EditProfile() {
   const router = useRouter();
@@ -34,11 +31,10 @@ export default function EditProfile() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       {localUser && (
         <AppUserProfileEdit appUser={localUser} complete={complete} />
       )}
-    </ThemeProvider>
+    </div>
   );
 }

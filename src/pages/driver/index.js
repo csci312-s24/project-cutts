@@ -1,13 +1,11 @@
-import { ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProposedTripsList from "../../components/ProposedTripsList";
-import theme, { ProfileButton, Footer } from "../../material/theme";
+import { ProfileButton, Footer } from "../../material/theme";
 
 export default function Driver() {
   const router = useRouter();
@@ -26,8 +24,7 @@ export default function Driver() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <ProfileButton
         variant="outlined"
         size="medium"
@@ -52,6 +49,6 @@ export default function Driver() {
         <ProposedTripsList proposedTrips={proposedTrips} />
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
-    </ThemeProvider>
+    </div>
   );
 }

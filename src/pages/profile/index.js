@@ -1,5 +1,3 @@
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -9,7 +7,7 @@ import Button from "@mui/material/Button";
 import { ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import theme, { Footer } from "../../material/theme";
+import { Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 
 export default function Profile() {
@@ -33,8 +31,7 @@ export default function Profile() {
   }, [session]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <Container sx={{ mt: 5 }}>
         <Typography variant="h3" align="center" sx={{ color: "#0C4C7F" }}>
           Midd Rideshare
@@ -98,6 +95,6 @@ export default function Profile() {
       </Container>
 
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
-    </ThemeProvider>
+    </div>
   );
 }

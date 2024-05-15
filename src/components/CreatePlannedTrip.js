@@ -1,9 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import PropTypes from "prop-types";
 import { useState } from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styles from "@/styles/Home.module.css";
@@ -12,13 +7,9 @@ import { TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { en } from "date-fns/locale";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import {
-  Unstable_NumberInput as NumberInput,
-  numberInputClasses,
-} from "@mui/base/Unstable_NumberInput";
 import { DateField } from "@mui/x-date-pickers/DateField";
-import Input from "@mui/material/Input";
-import theme from "../material/theme";
+import UserShape from "@/components/UserShape";
+import PropTypes from "prop-types";
 
 // just for creating planned trips - need to make separate React component for editing them
 export default function CreatePlannedTrip({ driver, complete }) {
@@ -36,23 +27,16 @@ export default function CreatePlannedTrip({ driver, complete }) {
       date: departureDateInput,
       departureTimeInput,
       departureLocationInput,
-      seatInput,
+      seatInput: parseInt(seatInput, 10),
       messageInput,
     };
     complete(plannedTrip);
   };
 
-  const canSave =
-    destinationInput &&
-    departureTimeInput &&
-    departureLocationInput &&
-    seatInput;
-
   const handleCancelClick = () => complete();
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <Container sx={{ mt: 3 }}>
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
           Create a Planned Trip
@@ -139,8 +123,11 @@ export default function CreatePlannedTrip({ driver, complete }) {
           </div>
         </div>
       </Container>
-    </ThemeProvider>
+    </div>
   );
 }
 
-// prop type is number for driver
+CreatePlannedTrip.propTypes = {
+  driver: UserShape.isRequired,
+  complete: PropTypes.func.isRequired,
+};
