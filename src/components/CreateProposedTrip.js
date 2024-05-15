@@ -44,7 +44,6 @@ export default function CreateProposedTrip({ proposer, complete }) {
 
   return (
     <div>
-      <CssBaseline />
       <Container sx={{ mt: 3 }}>
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
           Propose a Trip!
