@@ -17,8 +17,11 @@ export default function Rider() {
     router.push(`/rider/newProposedTrip`);
   };
 
+  const { data: session } = useSession({ required: true });
+
   const [plannedTrips, setPlannedTrips] = useState([]);
   useEffect(() => {
+    if (!session) return;
     fetch("/api/plannedTrip")
       .then((res) => res.json())
       .then((data) => setPlannedTrips(data));

@@ -5,7 +5,8 @@ import AppUserProfileEdit from "../../components/AppUserProfileEdit";
 
 export default function EditProfile() {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session } = useSession({ required: true });
+
   const [localUser, setLocalUser] = useState(null);
 
   useEffect(() => {

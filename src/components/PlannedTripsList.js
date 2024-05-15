@@ -6,6 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
+import { tripList } from "../material/theme";
 
 export default function PlannedTripsList({ plannedTrips, userID }) {
   const handleRequestClick = async (trip) => {
@@ -57,6 +58,7 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
           >
             Request <br /> Seat
           </Button>
+        <Box sx={tripList}>
           <Typography variant="h5">
             <ToolTip
               title={`Email: ${trip.relatedUser.email}

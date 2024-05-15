@@ -7,7 +7,9 @@ import Button from "@mui/material/Button";
 import { ButtonGroup, Box } from "@mui/material";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import { Footer } from "../../material/theme";
+import ChildCareIcon from "@mui/icons-material/ChildCare";
+import Grid from "@mui/material/Grid";
+import theme, { Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 
 export default function Profile() {
@@ -33,7 +35,7 @@ export default function Profile() {
   return (
     <div>
       <Container sx={{ mt: 5 }}>
-        <Typography variant="h3" align="center" sx={{ color: "#0C4C7F" }}>
+        <Typography variant="h2" align="center" sx={{ color: "#0C4C7F" }}>
           Midd Rideshare
         </Typography>
         {session && (
@@ -53,10 +55,15 @@ export default function Profile() {
         flexDirection="column"
         sx={{ mt: 1 }}
       >
-        <ButtonGroup variant="contained" size="large">
+        <ButtonGroup
+          variant="contained"
+          size="large"
+          sx={{ backgroundColor: "#0C4C7F" }}
+        >
           <Button
             onClick={() => handleClick("rider")}
             endIcon={<DirectionsCarIcon />}
+            sx={{ color: "white" }}
           >
             Planned Trips
           </Button>
@@ -64,25 +71,39 @@ export default function Profile() {
             <Button
               onClick={() => handleClick("driver")}
               endIcon={<AirportShuttleIcon />}
+              sx={{ color: "white" }}
             >
               Driver Portal
             </Button>
           )}
+          <Button
+            onClick={() => handleClick("yourTrips")}
+            endIcon={<ChildCareIcon />}
+            sx={{ color: "white" }}
+          >
+            Your Upcoming Trips
+          </Button>
         </ButtonGroup>
       </Box>
 
-      <Container sx={{ mt: 10 }}>
-        <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
+      <Container sx={{ ml: 5 }}>
+        <Typography variant="h4" align="left" sx={{ mt: 5, color: "#0C4C7F" }}>
           Profile
         </Typography>
-        <Typography variant="h5" align="left">
-          Personal Info:
-        </Typography>
-        <ul>Name: {localUser.name} </ul>
-        <ul>Email: {localUser.email} </ul>
-        <ul>Phone Number: {localUser.num} </ul>
-        <ul>Grad Year: {localUser.year} </ul>
-        {localUser.hasCar && <CarInfo user={localUser} />}
+        <Grid container sx={{ m: 2 }}>
+          <Grid item>
+            <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
+              Personal Info:
+            </Typography>
+            <ul>Name: {localUser.name} </ul>
+            <ul>Email: {localUser.email} </ul>
+            <ul>Phone Number: {localUser.num} </ul>
+            <ul>Grad Year: {localUser.year} </ul>
+          </Grid>
+          <Grid item sx={{ ml: 5 }}>
+            {localUser.hasCar && <CarInfo user={localUser} />}
+          </Grid>
+        </Grid>
         <Button
           variant="contained"
           size="small"
