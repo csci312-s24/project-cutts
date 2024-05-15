@@ -6,6 +6,7 @@
  */
 /* eslint-disable no-return-assign, no-param-reassign */
 import { testApiHandler } from "next-test-api-route-handler";
+import { getServerSession } from "next-auth/next";
 import { knex } from "../../knex/knex";
 import plannedTripsEndpoint from "../pages/api/plannedTrip/index";
 import plannedTripEndpoint from "../pages/api/plannedTrip/[id]";
@@ -13,6 +14,8 @@ import proposedTripsEndpoint from "../pages/api/proposedTrip/index";
 import proposedTripEndpoint from "../pages/api/proposedTrip/[id]";
 import seatRequestEditEndpoint from "../pages/api/seatRequest/index";
 import seatRequestEndpoint from "../pages/api/seatRequest/[id]";
+
+jest.mock("next-auth/next");
 
 describe("Cutts API", () => {
   beforeAll(
@@ -27,12 +30,20 @@ describe("Cutts API", () => {
     knex.destroy(),
   );
 
-  beforeEach(
-    () =>
-      // reset contents of test database
-      knex.seed.run(),
-    20000,
-  );
+  beforeEach(() => {
+    // Mock nex-auth getServerSession with id of test user
+    getServerSession.mockResolvedValue({
+      user: {
+        id: 1,
+      },
+    });
+    // Reset contents of the test database
+    return knex.seed.run();
+  }, 20000);
+
+  afterEach(() => {
+    getServerSession.mockReset();
+  });
 
   test("GET /api/plannedTrip should return all trips with dates that haven't happened yet", async () => {
     await testApiHandler({
@@ -141,8 +152,7 @@ describe("Cutts API", () => {
           },
           body: JSON.stringify(newSeatRequest),
         });
-        console.log(await res.text());
-        //  expect(res.json()).resolves.toMatchObject(newSeatRequest);
+        expect(res.json()).resolves.toMatchObject(newSeatRequest);
       },
     });
   });

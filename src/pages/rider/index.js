@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import PlannedTripsList from "@/components/PlannedTripsList";
 import Button from "@mui/material/Button";
 import { useSession } from "next-auth/react";
-import { ProfileButton, Footer } from "../../material/theme";
+import { ProfileButton } from "../../material/theme";
 
 export default function Rider() {
   const router = useRouter();
@@ -25,9 +25,8 @@ export default function Rider() {
     fetch("/api/plannedTrip")
       .then((res) => res.json())
       .then((data) => setPlannedTrips(data));
-  }, []);
+  }, [session]);
 
-  const { data: session } = useSession();
   const [localUser, setLocalUser] = useState("");
   useEffect(() => {
     if (!session) return;
@@ -60,7 +59,6 @@ export default function Rider() {
         </Button>
         <PlannedTripsList plannedTrips={plannedTrips} userID={localUser.id} />
       </Container>
-      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </div>
   );
 }

@@ -26,6 +26,7 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
     });
     if (response.ok) {
       // put new planned trip
+      console.log(trip);
       const response2 = await fetch(`/api/plannedTrip/${trip.id}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -36,6 +37,7 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
           "Content-Type": "application/json",
         },
       });
+      console.log(await response2.text());
       if (response2.ok) {
         // eslint-disable-next-line no-restricted-globals
         location.reload();
@@ -58,29 +60,30 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
           >
             Request <br /> Seat
           </Button>
-        <Box sx={tripList}>
-          <Typography variant="h5">
-            <ToolTip
-              title={`Email: ${trip.relatedUser.email}
+          <Box sx={tripList}>
+            <Typography variant="h5">
+              <ToolTip
+                title={`Email: ${trip.relatedUser.email}
             Number: ${trip.relatedUser.num}`}
-            >
-              {/* fix this if you can -- need a new line above btwn those two */}
-              <b>{trip.relatedUser.name}</b>
-            </ToolTip>{" "}
-            is driving from <b>{trip.departureLocationInput}</b> to{" "}
-            <b>{trip.destinationInput}</b>
-          </Typography>
-          <Typography>
-            Date: <b>{trip.date.slice(0, 10)}</b>
-          </Typography>
-          <Typography>
-            Departure Time: <b>{trip.departureTimeInput}</b>
-          </Typography>
-          <Typography>
-            Seats Available: <b>{trip.seatInput}</b>
-          </Typography>
-          <br />
-          <Typography>{trip.messageInput}</Typography>
+              >
+                {/* fix this if you can -- need a new line above btwn those two */}
+                <b>{trip.relatedUser.name}</b>
+              </ToolTip>{" "}
+              is driving from <b>{trip.departureLocationInput}</b> to{" "}
+              <b>{trip.destinationInput}</b>
+            </Typography>
+            <Typography>
+              Date: <b>{trip.date.slice(0, 10)}</b>
+            </Typography>
+            <Typography>
+              Departure Time: <b>{trip.departureTimeInput}</b>
+            </Typography>
+            <Typography>
+              Seats Available: <b>{trip.seatInput}</b>
+            </Typography>
+            <br />
+            <Typography>{trip.messageInput}</Typography>
+          </Box>
         </Box>
       </Container>
     </ListItem>

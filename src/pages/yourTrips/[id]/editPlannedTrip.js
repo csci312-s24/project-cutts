@@ -1,9 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import EditPlannedTrips from "@/components/EditPlannedTrips";
-import theme from "../../../material/theme";
 
 export default function EditYourPlannedTrip() {
   const router = useRouter();
@@ -31,11 +28,10 @@ export default function EditYourPlannedTrip() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       {thisTrip && (
         <EditPlannedTrips plannedTrip={thisTrip} complete={complete} />
       )}
-    </ThemeProvider>
+    </div>
   );
 }

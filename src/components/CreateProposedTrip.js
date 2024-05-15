@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -23,7 +22,6 @@ import {
 } from "@mui/base/Unstable_NumberInput";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import Input from "@mui/material/Input";
-import theme from "../material/theme";
 
 export default function CreateProposedTrip({ proposer, complete }) {
   const [dest, setDest] = useState("");
@@ -45,7 +43,7 @@ export default function CreateProposedTrip({ proposer, complete }) {
   const handleCancelClick = () => complete();
 
   return (
-    <ThemeProvider theme={theme}>
+    <div>
       <CssBaseline />
       <Container sx={{ mt: 3 }}>
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
@@ -117,6 +115,6 @@ export default function CreateProposedTrip({ proposer, complete }) {
           </div>
         </div>
       </Container>
-    </ThemeProvider>
+    </div>
   );
 }

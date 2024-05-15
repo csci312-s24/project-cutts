@@ -9,7 +9,6 @@ import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import Grid from "@mui/material/Grid";
-import theme, { Footer } from "../../material/theme";
 import CarInfo from "../../components/CarInfo";
 
 export default function Profile() {
@@ -114,8 +113,6 @@ export default function Profile() {
           Edit Profile
         </Button>
       </Container>
-
-      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </div>
   );
 }

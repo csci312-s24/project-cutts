@@ -2,14 +2,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { useState, useEffect } from "react";
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import YourTripsList from "@/components/yourTripsList";
-import theme, { ProfileButton, Footer } from "../../material/theme";
+import { ProfileButton } from "../../material/theme";
 
 export default function yourUpcomingTrips() {
   const router = useRouter();
@@ -25,8 +24,7 @@ export default function yourUpcomingTrips() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <ProfileButton
         variant="outlined"
         size="medium"
@@ -41,7 +39,6 @@ export default function yourUpcomingTrips() {
         </Typography>
       </Container>
       <YourTripsList plannedTrips={yourTrips[0]} proposedTrips={yourTrips[1]} />
-      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
-    </ThemeProvider>
+    </div>
   );
 }
