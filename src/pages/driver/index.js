@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProposedTripsList from "../../components/ProposedTripsList";
-import { ProfileButton, Footer } from "../../material/theme";
+import { ProfileButton } from "../../material/theme";
 
 export default function Driver() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Driver() {
     fetch("/api/proposedTrip")
       .then((res) => res.json())
       .then((data) => setProposedTrips(data));
-  }, []);
+  }, [session]);
 
   return (
     <div>
@@ -51,7 +52,6 @@ export default function Driver() {
         </Button>
         <ProposedTripsList proposedTrips={proposedTrips} />
       </Container>
-      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </div>
   );
 }

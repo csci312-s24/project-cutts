@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -10,7 +9,6 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { en } from "date-fns/locale";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateField } from "@mui/x-date-pickers/DateField";
-import theme from "../material/theme";
 
 export default function EditPlannedTrip({ plannedTrip, complete }) {
   const [destination, setDestination] = useState(plannedTrip.destinationInput);
@@ -38,7 +36,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
   const handleCancelClick = () => complete();
 
   return (
-    <ThemeProvider theme={theme}>
+    <div>
       <CssBaseline />
       <Container sx={{ mt: 3 }}>
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
@@ -129,6 +127,6 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
           </div>
         </div>
       </Container>
-    </ThemeProvider>
+    </div>
   );
 }

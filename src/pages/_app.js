@@ -1,14 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from "prop-types";
 import { SessionProvider } from "next-auth/react";
-import "@/styles/globals.css";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/material/theme";
-
-// {
-//   Component,
-//   pageProps: { session, ...pageProps},
-//  }
+import theme, { Footer } from "@/material/theme";
 
 export default function App(appProps) {
   const { Component, pageProps } = appProps;
@@ -18,6 +12,7 @@ export default function App(appProps) {
     <ThemeProvider theme={theme}>
       <SessionProvider session={session}>
         <Component {...pageProps} />
+        <Footer>CS 312 - Spring 2024 - Cutts</Footer>
       </SessionProvider>
     </ThemeProvider>
   );

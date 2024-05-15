@@ -25,7 +25,7 @@ export default class PlannedTrip extends BaseModel {
 
       properties: {
         id: { type: "integer" },
-        date: { type: "date" },
+        date: { type: "string" },
         driverID: { type: "integer" }, // this should be the user ID of the planner
         destinationInput: { type: "string" },
         departureTimeInput: { type: "string" },
@@ -34,7 +34,6 @@ export default class PlannedTrip extends BaseModel {
           type: "integer",
           minimum: 0,
           maximum: 12,
-          // MaterialUI has seatInput as a string... we want it to be a number or int
         },
         messageInput: { type: "string" },
       },

@@ -1,10 +1,8 @@
 import Head from "next/head";
-import CssBaseline from "@mui/material/CssBaseline";
 import { AppCacheProvider } from "@mui/material-nextjs/v13-pagesRouter";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { Footer } from "../material/theme";
 import LoginWidget from "../components/LoginWidget";
 
 export default function Home() {
@@ -13,7 +11,6 @@ export default function Home() {
       <Head>
         <title>Cutts App</title>
       </Head>
-      <CssBaseline />
       <main>
         <div>
           <Container sx={{ mt: 20 }}>
@@ -39,8 +36,6 @@ export default function Home() {
           </div>
         </Box>
       </main>
-
-      <Footer>CS 312 - Spring 2024 - Cutts</Footer>
     </AppCacheProvider>
   );
 }
