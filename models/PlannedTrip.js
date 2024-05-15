@@ -16,6 +16,7 @@ export default class PlannedTrip extends BaseModel {
       type: "object",
       required: [
         "driverID",
+        "date",
         "destinationInput",
         "departureTimeInput",
         "departureLocationInput",
@@ -24,6 +25,7 @@ export default class PlannedTrip extends BaseModel {
 
       properties: {
         id: { type: "integer" },
+        date: { type: "date" },
         driverID: { type: "integer" }, // this should be the user ID of the planner
         destinationInput: { type: "string" },
         departureTimeInput: { type: "string" },

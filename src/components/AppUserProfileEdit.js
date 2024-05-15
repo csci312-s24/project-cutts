@@ -55,10 +55,12 @@ export default function AppUserProfileEdit({ appUser, complete }) {
       </Typography>
       <TextField
         id="Name"
+        required
         placeholder="enter your name"
         label="Name"
         variant="outlined"
         value={nameInput}
+        error={!nameInput}
         onChange={(event) => setNameInput(event.target.value)}
         sx={{ paddingBottom: 1 }}
       />
@@ -95,10 +97,12 @@ export default function AppUserProfileEdit({ appUser, complete }) {
       {hasCarInput && (
         <TextField
           id="CarYear"
+          required
           placeholder="enter the year of your car"
           label="Car Year"
           variant="outlined"
           value={carYearInput}
+          error={!carYearInput}
           onChange={(event) => setCarYearInput(event.target.value)}
           sx={{ paddingBottom: 1 }}
         />
@@ -106,10 +110,12 @@ export default function AppUserProfileEdit({ appUser, complete }) {
       {hasCarInput && (
         <TextField
           id="CarMake"
+          required
           placeholder="enter the make of your car"
           label="Car Make"
           variant="outlined"
           value={carMakeInput}
+          error={!carMakeInput}
           onChange={(event) => setCarMakeInput(event.target.value)}
           sx={{ paddingBottom: 1 }}
         />
@@ -117,10 +123,12 @@ export default function AppUserProfileEdit({ appUser, complete }) {
       {hasCarInput && (
         <TextField
           id="CarModel"
+          required
           placeholder="enter the model of your car"
           label="Car Model"
           variant="outlined"
           value={carModelInput}
+          error={!carModelInput}
           onChange={(event) => setCarModelInput(event.target.value)}
           sx={{ paddingBottom: 1 }}
         />
@@ -128,10 +136,12 @@ export default function AppUserProfileEdit({ appUser, complete }) {
       {hasCarInput && (
         <TextField
           id="CarPlate"
+          required
           placeholder="enter the plate of your car"
           label="Car Plate"
           variant="outlined"
           value={carPlateInput}
+          error={!carPlateInput}
           onChange={(event) => setCarPlateInput(event.target.value)}
           sx={{ paddingBottom: 1 }}
         />

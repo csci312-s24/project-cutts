@@ -49,6 +49,7 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
   const plannedTripList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
+
         <Box sx={{ border: 1, borderRadius: "8px" }}>
           <Button
             variant="contained"
@@ -57,6 +58,9 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
           >
             Request <br /> Seat
           </Button>
+
+        <Box sx={tripList}>
+
           <Typography variant="h5">
             <ToolTip
               title={`Email: ${trip.relatedUser.email}

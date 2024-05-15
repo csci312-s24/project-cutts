@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/material/theme";
 
+
 // {
 //   Component,
 //   pageProps: { session, ...pageProps},

@@ -1,36 +1,32 @@
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import CssBaseline from "@mui/material/CssBaseline";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/rules-of-hooks */
 
+import { useState, useEffect } from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import ProposedTripsList from "../../components/ProposedTripsList";
-import { ProfileButton, Footer } from "../../material/theme";
+import YourTripsList from "@/components/yourTripsList";
+import theme, { ProfileButton, Footer } from "../../material/theme";
 
-export default function Driver() {
+export default function yourUpcomingTrips() {
   const router = useRouter();
-  const { data: session } = useSession({ required: true });
-
   const handleClick = (comm) => {
     router.push(`/${comm}`);
   };
-  const toRideCreator = () => {
-    router.push(`/driver/newPlannedTrip`);
-  };
 
-  const [proposedTrips, setProposedTrips] = useState([]);
+  const [yourTrips, setYourTrips] = useState([[], []]);
   useEffect(() => {
-    if (!session) return;
-    fetch("/api/proposedTrip")
+    fetch("/api/yourTrips")
       .then((res) => res.json())
-      .then((data) => setProposedTrips(data));
+      .then((data) => setYourTrips(data));
   }, []);
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <ProfileButton
         variant="outlined"
         size="medium"
@@ -39,22 +35,13 @@ export default function Driver() {
       >
         Profile
       </ProfileButton>
-
       <Container sx={{ mt: 10 }}>
         <Typography variant="h4" align="left" sx={{ color: "#0C4C7F" }}>
-          Driver Portal
+          Your Upcoming Trips
         </Typography>
-        <Button
-          variant="contained"
-          onClick={() => toRideCreator()}
-          sx={{ left: "7px" }}
-        >
-          {" "}
-          New Ride
-        </Button>
-        <ProposedTripsList proposedTrips={proposedTrips} />
       </Container>
+      <YourTripsList plannedTrips={yourTrips[0]} proposedTrips={yourTrips[1]} />
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
-    </div>
+    </ThemeProvider>
   );
 }
