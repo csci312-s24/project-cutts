@@ -4,7 +4,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import styles from "@/styles/Home.module.css";
 import Button from "@mui/material/Button";
 
 import {
@@ -48,7 +47,7 @@ export default function EditProposedTrip({ proposedTrip, complete }) {
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
           Edit Your Proposed Trip
         </Typography>
-        <div className={styles.form}>
+        <div>
           <TextField
             required
             id="destination"
@@ -58,6 +57,7 @@ export default function EditProposedTrip({ proposedTrip, complete }) {
             helperText={!destination ? "destinationInput can't be blank" : " "}
             onChange={(event) => setDestination(event.target.value)}
           />
+          <br />
 
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={en}>
             <DateField
@@ -71,6 +71,7 @@ export default function EditProposedTrip({ proposedTrip, complete }) {
               onChange={(event) => setEditedDate(event)}
             />
           </LocalizationProvider>
+          <br />
 
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
@@ -90,6 +91,7 @@ export default function EditProposedTrip({ proposedTrip, complete }) {
               <MenuItem value="night">Night</MenuItem>
             </Select>
           </FormControl>
+          <br />
 
           <TextField
             id="note"
@@ -97,6 +99,7 @@ export default function EditProposedTrip({ proposedTrip, complete }) {
             value={note}
             onChange={(event) => setNote(event.target.value)}
           />
+          <br />
           <div>
             <Button variant="contained" size="small" onClick={handleSaveClick}>
               Save

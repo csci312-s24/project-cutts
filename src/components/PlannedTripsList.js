@@ -5,21 +5,13 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
+import { tripList } from "../material/theme";
 
 export default function PlannedTripsList({ plannedTrips }) {
   const plannedTripList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
-        <Box
-          sx={{
-            border: 1,
-            padding: 1,
-            boxShadow: 1,
-            borderColor: "lightgrey",
-            borderRadius: "8px",
-            bgcolor: "#f0f4ff",
-          }}
-        >
+        <Box sx={tripList}>
           <Typography variant="h5">
             <ToolTip
               title={`Email: ${trip.relatedUser.email}

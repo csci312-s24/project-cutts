@@ -4,7 +4,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import styles from "@/styles/Home.module.css";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
@@ -45,7 +44,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
           Edit Your Planned Trip
         </Typography>
-        <div className={styles.form}>
+        <div>
           <TextField
             required
             id="destination"
@@ -55,6 +54,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             helperText={!destination ? "destinationInput can't be blank" : " "}
             onChange={(event) => setDestination(event.target.value)}
           />
+          <br />
 
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={en}>
             <DateField
@@ -68,7 +68,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
               onChange={(event) => setEditedDate(event)}
             />
           </LocalizationProvider>
-
+          <br />
           <TextField
             required
             margin="normal"
@@ -79,6 +79,7 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             helperText={!time ? "departure time can't be blank" : " "}
             onChange={(event) => setTime(event.target.value)}
           />
+          <br />
 
           <TextField
             required
@@ -106,13 +107,14 @@ export default function EditPlannedTrip({ plannedTrip, complete }) {
             }
             onChange={(event) => setSeat(event.target.value)}
           />
-
+          <br />
           <TextField
             id="message"
             label="(Optional) Add a message about your ride"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
           />
+          <br />
           <div>
             <Button variant="contained" size="small" onClick={handleSaveClick}>
               Save

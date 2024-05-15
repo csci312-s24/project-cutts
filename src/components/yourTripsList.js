@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
+import { tripList } from "../material/theme";
 
 export default function YourTripsList({ plannedTrips, proposedTrips }) {
   const router = useRouter();
@@ -23,16 +24,7 @@ export default function YourTripsList({ plannedTrips, proposedTrips }) {
   const yourPlannedTripsList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
-        <Box
-          sx={{
-            border: 1,
-            padding: 1,
-            boxShadow: 1,
-            borderColor: "lightgrey",
-            borderRadius: "8px",
-            bgcolor: "#f0f4ff",
-          }}
-        >
+        <Box sx={tripList}>
           <Typography variant="h5">
             <ToolTip
               title={`Email: ${trip.relatedUser.email}

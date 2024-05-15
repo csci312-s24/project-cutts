@@ -58,10 +58,15 @@ export default function Profile() {
         flexDirection="column"
         sx={{ mt: 1 }}
       >
-        <ButtonGroup variant="contained" size="large">
+        <ButtonGroup
+          variant="contained"
+          size="large"
+          sx={{ backgroundColor: "#0C4C7F" }}
+        >
           <Button
             onClick={() => handleClick("rider")}
             endIcon={<DirectionsCarIcon />}
+            sx={{ color: "white" }}
           >
             Planned Trips
           </Button>
@@ -69,6 +74,7 @@ export default function Profile() {
             <Button
               onClick={() => handleClick("driver")}
               endIcon={<AirportShuttleIcon />}
+              sx={{ color: "white" }}
             >
               Driver Portal
             </Button>
@@ -76,6 +82,7 @@ export default function Profile() {
           <Button
             onClick={() => handleClick("yourTrips")}
             endIcon={<ChildCareIcon />}
+            sx={{ color: "white" }}
           >
             Your Upcoming Trips
           </Button>

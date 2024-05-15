@@ -10,6 +10,15 @@ export const roboto = Roboto({
   fallback: ["Helvetica", "Arial", "sans-serif"],
 });
 
+export const tripList = {
+  border: 1,
+  padding: 1,
+  boxShadow: 1,
+  borderColor: "lightgrey",
+  borderRadius: "8px",
+  bgcolor: "#f0f4ff",
+};
+
 export const ProfileButton = styled(Button)({
   position: "absolute",
   top: "7px",
@@ -44,7 +53,6 @@ const theme = createTheme({
       main: red.A400,
     },
     background: {
-      // default: "#cfe5fc",
       default: "#cfe5fc",
     },
   },

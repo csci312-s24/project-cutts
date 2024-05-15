@@ -6,7 +6,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import styles from "@/styles/Home.module.css";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
@@ -57,7 +56,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
           Create a Planned Trip
         </Typography>
-        <div className={styles.form}>
+        <div>
           <TextField
             required
             id="destinationInput"
@@ -69,6 +68,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
             onChange={(event) => setDestinationInput(event.target.value)}
           />
 
+          <br />
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={en}>
             <DateField
               required
@@ -79,6 +79,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
               onChange={(event) => setDepartureDateInput(event)}
             />
           </LocalizationProvider>
+          <br />
 
           <TextField
             required
@@ -92,6 +93,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
             }
             onChange={(event) => setDepartureTimeInput(event.target.value)}
           />
+          <br />
 
           <TextField
             required
@@ -104,6 +106,7 @@ export default function CreatePlannedTrip({ driver, complete }) {
             }
             onChange={(event) => setDepartureLocationInput(event.target.value)}
           />
+          <br />
 
           <TextField
             required
@@ -119,12 +122,15 @@ export default function CreatePlannedTrip({ driver, complete }) {
             }
             onChange={(event) => setSeatInput(event.target.value)}
           />
+          <br />
 
           <TextField
             id="message"
             label="(Optional) Add a message about your ride"
             onChange={(event) => setMessageInput(event.target.value)}
           />
+          <br />
+
           <div>
             <Button variant="contained" size="small" onClick={handleSaveClick}>
               Save
