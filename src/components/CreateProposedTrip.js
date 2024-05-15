@@ -6,7 +6,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import styles from "@/styles/Home.module.css";
 import Button from "@mui/material/Button";
 import {
   TextField,
@@ -52,7 +51,7 @@ export default function CreateProposedTrip({ proposer, complete }) {
         <Typography variant="h5" align="left" sx={{ color: "#0C4C7F" }}>
           Propose a Trip!
         </Typography>
-        <div className={styles.form}>
+        <div>
           {/* how to make dest a required field */}
           <TextField
             required
@@ -63,6 +62,7 @@ export default function CreateProposedTrip({ proposer, complete }) {
             helperText={!dest ? "destination input can't be blank" : ""}
             onChange={(event) => setDest(event.target.value)}
           />
+          <br />
 
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={en}>
             <DateField
@@ -74,6 +74,7 @@ export default function CreateProposedTrip({ proposer, complete }) {
               onChange={(event) => setDate(event)}
             />
           </LocalizationProvider>
+          <br />
 
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
@@ -93,12 +94,14 @@ export default function CreateProposedTrip({ proposer, complete }) {
               <MenuItem value="night">Night</MenuItem>
             </Select>
           </FormControl>
+          <br />
 
           <TextField
             id="message"
             label="(Optional) Add a message about your ride"
             onChange={(event) => setMessage(event.target.value)}
           />
+          <br />
 
           <div>
             <Button variant="contained" size="small" onClick={handleSaveClick}>
