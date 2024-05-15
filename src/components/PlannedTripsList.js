@@ -26,7 +26,6 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
     });
     if (response.ok) {
       // put new planned trip
-      console.log(trip);
       const response2 = await fetch(`/api/plannedTrip/${trip.id}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -37,7 +36,6 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
           "Content-Type": "application/json",
         },
       });
-      console.log(await response2.text());
       if (response2.ok) {
         // eslint-disable-next-line no-restricted-globals
         location.reload();
