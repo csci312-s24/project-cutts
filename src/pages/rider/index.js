@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import PlannedTripsList from "@/components/PlannedTripsList";
 import Button from "@mui/material/Button";
-import theme, { ProfileButton, Footer } from "../../material/theme";
+import { useSession } from "next-auth/react";
+import { ProfileButton, Footer } from "../../material/theme";
 
 export default function Rider() {
   const router = useRouter();
@@ -29,9 +27,17 @@ export default function Rider() {
       .then((data) => setPlannedTrips(data));
   }, []);
 
+  const { data: session } = useSession();
+  const [localUser, setLocalUser] = useState("");
+  useEffect(() => {
+    if (!session) return;
+    fetch(`/api/User/${session.user.id}`)
+      .then((res) => res.json())
+      .then((data) => setLocalUser(data));
+  }, [session]);
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <ProfileButton
         variant="outlined"
         size="medium"
@@ -52,9 +58,9 @@ export default function Rider() {
           {" "}
           New Ride
         </Button>
-        <PlannedTripsList plannedTrips={plannedTrips} />
+        <PlannedTripsList plannedTrips={plannedTrips} userID={localUser.id} />
       </Container>
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
-    </ThemeProvider>
+    </div>
   );
 }

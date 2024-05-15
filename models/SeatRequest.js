@@ -16,13 +16,13 @@ export default class SeatRequest extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["title"],
+      // required: ["title"],
 
       properties: {
         id: { type: "integer" },
         requester: { type: "integer" }, // the id of the user who requested
         status: { type: "string", enum: ["approved", "denied", "pending"] },
-        time: { type: "timestamp", default: "now" },
+        time: { type: "string" },
         plannedTripId: { type: "integer" },
       },
     };

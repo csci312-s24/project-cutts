@@ -1,6 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from "prop-types";
 import { SessionProvider } from "next-auth/react";
+import "@/styles/globals.css";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@/material/theme";
 
 // {
 //   Component,
@@ -12,9 +15,11 @@ export default function App(appProps) {
   const { session } = pageProps;
 
   return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <ThemeProvider theme={theme}>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </ThemeProvider>
   );
 }
 

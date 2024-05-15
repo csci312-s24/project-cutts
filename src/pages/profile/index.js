@@ -1,5 +1,3 @@
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -35,8 +33,7 @@ export default function Profile() {
   }, [session]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <Container sx={{ mt: 5 }}>
         <Typography variant="h2" align="center" sx={{ color: "#0C4C7F" }}>
           Midd Rideshare
@@ -119,6 +116,6 @@ export default function Profile() {
       </Container>
 
       <Footer>CS 312 - Spring 2024 - Cutts</Footer>
-    </ThemeProvider>
+    </div>
   );
 }

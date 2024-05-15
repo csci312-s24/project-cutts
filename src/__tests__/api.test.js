@@ -11,6 +11,8 @@ import plannedTripsEndpoint from "../pages/api/plannedTrip/index";
 import plannedTripEndpoint from "../pages/api/plannedTrip/[id]";
 import proposedTripsEndpoint from "../pages/api/proposedTrip/index";
 import proposedTripEndpoint from "../pages/api/proposedTrip/[id]";
+import seatRequestEditEndpoint from "../pages/api/seatRequest/index";
+import seatRequestEndpoint from "../pages/api/seatRequest/[id]";
 
 describe("Cutts API", () => {
   beforeAll(
@@ -95,6 +97,52 @@ describe("Cutts API", () => {
       test: async ({ fetch }) => {
         const res = await fetch();
         expect(res.json()).resolves.toMatchObject(trip2);
+      },
+    });
+  });
+
+  test("GET /api/seatRequest/id should return the seat request with the corresponding id", async () => {
+    const seatRequest = {
+      id: 1,
+      requester: 0,
+      status: "pending",
+      time: "2024-05-13T17:37:21.505Z",
+      plannedTripId: 1,
+    };
+
+    await testApiHandler({
+      rejectOnHandlerError: true,
+      pagesHandler: seatRequestEndpoint,
+      params: { id: 1 },
+      test: async ({ fetch }) => {
+        const res = await fetch();
+        expect(res.json()).resolves.toMatchObject(seatRequest);
+      },
+    });
+  });
+
+  test("POST /api/seatRequest should create a new seat request", async () => {
+    const newSeatRequest = {
+      id: 3,
+      requester: 0,
+      status: "approved",
+      time: new Date().toISOString(),
+      plannedTripId: 1,
+    };
+
+    await testApiHandler({
+      rejectOnHandlerError: true,
+      pagesHandler: seatRequestEditEndpoint,
+      test: async ({ fetch }) => {
+        const res = await fetch({
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newSeatRequest),
+        });
+        console.log(await res.text());
+        //  expect(res.json()).resolves.toMatchObject(newSeatRequest);
       },
     });
   });

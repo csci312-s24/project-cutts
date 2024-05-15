@@ -9,7 +9,7 @@ exports.up = function (knex) {
       .notNullable()
       .onDelete("cascade");
     table.string("status").defaultTo("pending");
-    table.timestamp("time").defaultTo(knex.fn.now());
+    table.string("time").defaultTo(knex.fn.now());
     table
       .integer("plannedTripId")
       .references("id")

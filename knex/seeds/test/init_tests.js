@@ -51,6 +51,18 @@ exports.seed = async function (knex) {
     },
   ]);
 
+  await knex("SeatRequest").del();
+  await knex.raw('ALTER SEQUENCE "ProposedTrip_id_seq" RESTART WITH 1');
+  await knex("SeatRequest").insert([
+    {
+      id: 1,
+      requester: 0,
+      status: "pending",
+      time: "2024-05-13T17:37:21.505Z",
+      plannedTripId: 1,
+    },
+  ]);
+
   await knex("ProposedTrip").del();
   await knex.raw('ALTER SEQUENCE "ProposedTrip_id_seq" RESTART WITH 1');
   await knex("ProposedTrip").insert([

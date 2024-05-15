@@ -5,12 +5,59 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import ToolTip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
 import { tripList } from "../material/theme";
 
-export default function PlannedTripsList({ plannedTrips }) {
+export default function PlannedTripsList({ plannedTrips, userID }) {
+  const handleRequestClick = async (trip) => {
+    const newSeatRequest = {
+      requester: userID,
+      status: "pending",
+      time: new Date().toISOString(),
+      plannedTripId: trip.id,
+    };
+
+    const response = await fetch(`/api/seatRequest`, {
+      method: "POST",
+      body: JSON.stringify(newSeatRequest),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      // put new planned trip
+      const response2 = await fetch(`/api/plannedTrip/${trip.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          ...trip,
+          seatInput: trip.seatInput - 1,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response2.ok) {
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
+      } else {
+        console.log("Error: Failed to update the planned trip"); // eslint-disable-line no-console
+      }
+    } else {
+      console.log("Error: Failed to create the seat request"); // eslint-disable-line no-console
+    }
+  };
+
   const plannedTripList = plannedTrips.map((trip) => (
     <ListItem key={trip.id}>
       <Container>
+        <Box sx={{ border: 1, borderRadius: "8px" }}>
+          <Button
+            variant="contained"
+            onClick={() => handleRequestClick(trip)}
+            sx={{ top: 0, right: 0 }}
+          >
+            Request <br /> Seat
+          </Button>
         <Box sx={tripList}>
           <Typography variant="h5">
             <ToolTip

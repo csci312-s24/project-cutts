@@ -4,14 +4,9 @@ import Home from "@/pages/index";
 import mockRouter from "next-router-mock";
 import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
 
-
-
 // Mock the NextAuth package
 jest.mock("next-auth/react");
 
-
-
-// Code from Micheal Linderman, main.test.js Assignment 4
 // Replace the router with the mock
 // eslint-disable-next-line global-require
 jest.mock("next/router", () => require("next-router-mock"));
@@ -33,7 +28,6 @@ describe("End-to-end testing", () => {
   });
 
   test("Render index.js component", () => {
-
     SessionProvider.mockImplementation(({ children }) => (
       <mock-provider>{children}</mock-provider>
     ));
