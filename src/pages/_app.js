@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
 import theme, { Footer } from "@/material/theme";
+import { CssBaseline } from "@mui/material";
 
 export default function App(appProps) {
   const { Component, pageProps } = appProps;
@@ -10,6 +11,7 @@ export default function App(appProps) {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <SessionProvider session={session}>
         <Component {...pageProps} />
         <Footer>CS 312 - Spring 2024 - Cutts</Footer>

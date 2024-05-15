@@ -17,6 +17,7 @@ export const tripList = {
   borderColor: "lightgrey",
   borderRadius: "8px",
   bgcolor: "#f0f4ff",
+  position: "relative",
 };
 
 export const ProfileButton = styled(Button)({

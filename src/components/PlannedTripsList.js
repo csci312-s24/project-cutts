@@ -53,14 +53,7 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
     <ListItem key={trip.id}>
       <Container>
         <Box sx={{ border: 1, borderRadius: "8px" }}>
-          <Button
-            variant="contained"
-            onClick={() => handleRequestClick(trip)}
-            sx={{ top: 0, right: 0 }}
-          >
-            Request <br /> Seat
-          </Button>
-          <Box sx={tripList}>
+          <Box container sx={tripList}>
             <Typography variant="h5">
               <ToolTip
                 title={`Email: ${trip.relatedUser.email}
@@ -83,6 +76,14 @@ export default function PlannedTripsList({ plannedTrips, userID }) {
             </Typography>
             <br />
             <Typography>{trip.messageInput}</Typography>
+
+            <Button
+              variant="contained"
+              onClick={() => handleRequestClick(trip)}
+              sx={{ top: 9, right: 9, position: "absolute" }}
+            >
+              Request <br /> Seat
+            </Button>
           </Box>
         </Box>
       </Container>
