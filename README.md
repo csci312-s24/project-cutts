@@ -2,7 +2,7 @@
 
 # Description
 
-This application provides a platform for Middlebury students to connect with others who need rides to the same location. Driving students can enter their trip information and other students can submit proposals for rides off campus with specified dates and destinations. All students can access the database of existing trips and proposals for rides to find others who match their trip needs.
+This application provides a platform for Middlebury students to connect with others who need rides to the same location. Driving students can enter their trip information and other students can submit proposals for rides off campus with specified dates and destinations. All students can access the list of existing trips and proposals for rides to find others who match their trip needs.
 
 # Deployed Application Link
 
